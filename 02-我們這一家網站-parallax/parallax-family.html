@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax進階</title>
+    <style>
+        body{
+            margin: 0;
+            height: 3000px;
+        }
+        nav{
+            width: calc(80% - 10px);
+            height: calc(50px - 10px);
+            position: fixed;
+            top: 0;
+            left: 10%;
+            z-index:5;
+            padding: 10px;
+        }
+        .logo{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-image: url(./img/我們這一家/橘子.jpg);
+            background-size: contain;
+            float: left;
+        }
+        .logo:hover{
+            transform: rotate(45deg) scale(1.6) translate(30px,10px);
+        }
+        .nav-buttons{
+            float:right;
+        }
+        .nav-topbtn{
+            background-color: #efe51d;
+            width: 80px;
+            height: 20px;
+            text-align:center;
+            border-radius: 5px;
+            padding:10px;
+            font-size: 20px;
+            text-shadow: 1px 1px 4px #4b4141;
+            font-family: 微軟正黑體;
+            margin-left:10px;
+            line-height: 20px;
+        }
+        .nav-topbtn1{
+            float: left;
+        }
+        .nav-topbtn2{
+            float: left;
+        }
+        .nav-topbtn3{
+            float: left;
+        }
+        a{
+            text-decoration:none;
+            color: #fff;
+            font-weight: bold;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .banner {
+            width: 100%;
+            height: 100vh;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+
+        }
+        .mask {
+            width: 100%;
+            height: 50vh;
+            position: absolute;
+            bottom: 0;
+            background-color: black;
+            opacity: 0.5;
+        }
+        .btn{
+            width: 160px;
+            height: 40px;
+            background-color: #c50d0d;
+            position: absolute;
+            left:50%;
+            top:75%;
+            transform: translate(-50%, -50%);
+            border-radius:10px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 24px;
+            color:#fff;
+            font-family: 微軟正黑體;
+            letter-spacing: 1px;
+        }
+        .btn-1{
+            top:60%;
+            font-size: 16px;
+            background-color: transparent;
+            width: 600px;
+            color:#ffffff;
+            line-height:1.5;
+        }
+        h4{
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom:10px ;
+        }
+        #banner-1 {
+            background-image: url(./img/我們這一家/全家福.jpg);
+        }
+        #banner-2 {
+            background-image: url(./img/我們這一家/ep1.jpg);
+        }
+        #banner-3 {
+            background-image: url(./img/我們這一家/ep2.jpg);
+        }
+        #banner-4 {
+            background-image: url(./img/我們這一家/ep3.jpg);
+        }
+        .go-top {
+            width: 80px;
+            height: 80px;
+            background-color: #c8be06;
+            color:#fff;
+            font-size: 24px;
+            text-align: center;
+            line-height: 80px;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 20px;
+            right: 7%;
+        }
+        .go-top:hover{
+            color:#c8be06;
+            background-color: #fff;
+        }
+        .nav-topbtn:hover{
+            background-color: #555;
+            font-size: 26px;
+        }
+        .play:hover{
+            background-color: #fff;
+            color:#c50d0d;
+        }
+    </style>
+</head>
+<body>
+    <!-- 架構分析
+     1.navbar > logo + btn*3
+     2.section-a > background-image mask-bottom + btn
+     3.section-b > background-image mask-bottom + btn
+     4.section-c > background-image mask-bottom + btn -->
+    <nav>
+        <div class="logo"></div>
+        <div class="nav-buttons">
+            <a class="nav-topbtn nav-topbtn1" href="#banner-1">簡介</a>
+            <a class="nav-topbtn nav-topbtn2" href="#banner-2">EP01</a>
+            <a class="nav-topbtn nav-topbtn3" href="#banner-3">EP02</a>
+            <a class="nav-topbtn nav-topbtn3" href="#banner-4">EP03</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="banner" id="banner-1">
+            <div class="mask"></div>
+            <div class="btn btn-1"><h4>《我們這一家》</h4>（あたしンち）是日本一部以小家庭成員為中心，表現出日常生活中所發生大小事為題材的漫畫與動畫作品，原作者為Eiko Kera（けらえいこ）。2002年日本朝日電視台播出同名動畫，2003年12月推出同名電影。《我們這一家》（あたしンち；아따맘마；ATASHIn'CHI）是日本漫畫家Eiko Kera（けらえいこ/螻栄子，本名けらかわうち えいこ/螻川內栄子）創作的漫畫作品，2002年被改編為同名電視動畫。</div>
+        </div>
+        <div class="banner" id="banner-2">
+            <div class="mask"></div>
+            <a class="btn play" href="https://www.youtube.com/watch?v=P1Ncmeq_-ao" target="_blank">播放EP01</a>
+        </div>
+        <div class="banner" id="banner-3">
+            <div class="mask"></div>
+            <a class="btn play" href="https://www.youtube.com/watch?v=lC5dCM6bAvY" target="_blank">播放EP02</a>
+        </div>
+        <div class="banner" id="banner-4">
+            <div class="mask"></div>
+            <a class="btn play" href="https://www.youtube.com/watch?v=a9MNXXQ8MzQ" target="_blank">播放EP03</a>
+        </div>
+        <a href="#banner-1">
+            <div class="go-top">Top</div>
+        </a>
+    </div>
+</body>
+</html>

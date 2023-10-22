@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mypage</title>
+    <style>
+        body{
+            margin: 0;
+            font-family: 微軟正黑體;
+        }
+        #nav{
+            width: 100%;
+            height: 55px;
+            background-color: #fff;
+            position: fixed;
+            z-index: 5;
+            border-bottom: 1px solid rgba(#aaa, 1);
+        }
+        #logo{
+            width: 40px;
+            height: 40px;
+            background-image: url(./img/facebook/logo.png);
+            position: absolute;
+            left: 18px;
+            top: 6px;
+        }
+        #search{
+            width: 275px;
+            height: 40px;
+            background-color: #E9EBEE;
+            position: absolute;
+            top: 6px;
+            left: 70px;
+            border-radius: 30px;
+        }
+        #s-icon{
+            width: 16px;
+            height: 16px;
+            background-image: url(./img/facebook/svgexport-3.svg);
+            background-size: cover;
+            position: absolute;
+            left: 10px;
+            top: 12px;
+        }
+        #s-text{
+            position: absolute;
+            left: 33px;
+            top: 9px;
+            font-size: 15px;
+            color:#666
+        }
+        #box-middle{
+            width: calc((100% - 510px) /2);
+            height: 55px;
+            position: absolute;
+            left: calc(50% - (((100% - 510px) /2))/2 + 5px);
+        }
+        #middle-icon1{
+            width: 30px;
+            height: 30px;
+            background-image: url(./img/facebook/svgexport-4.svg);
+            background-size: cover;
+            position: absolute;
+            top: 12px;
+            left: 120px;
+        }
+        #middle-icon2{
+            width: 30px;
+            height: 30px;
+            background-image: url(./img/facebook/svgexport-5.svg);
+            background-size: cover;
+            position: absolute;
+            top: 12px;
+            left: 260px;
+        }
+        #middle-icon3{
+            width: 30px;
+            height: 30px;
+            background-image: url(./img/facebook/svgexport-6.svg);
+            background-size: cover;
+            position: absolute;
+            top: 12px;
+            left: 400px;
+        }
+        #middle-icon4{
+            width: 30px;
+            height: 30px;
+            background-image: url(./img/facebook/svgexport-7.svg);
+            background-size: cover;
+            position: absolute;
+            top: 12px;
+            left: 530px;
+        }
+        #box-right{
+            width: 190px;
+            height: 55px;
+            position: absolute;
+            right: 20px;
+        }
+        #avatar-s{
+            width: 40px;
+            height: 40px;
+            background-color: #f8da62;
+            border-radius: 50%;
+            background-image: url(./img/facebook/avatar-cut-2.jpg);
+            background-size: cover;
+            float: right;
+            margin-top: 6px;
+        }
+        #right-icon1{
+            width: 40px;
+            height: 40px;
+            background-color: #eee;
+            border-radius: 50%;
+            background-image: url(./img/facebook/svgexport-10.svg);
+            background-repeat: no-repeat;
+            background-size: 50%;
+            background-position: center center;
+            float: right;
+            margin-right: 8px;
+            margin-top: 6px;
+        }
+        #right-icon2{
+            width: 40px;
+            height: 40px;
+            background-color: #eee;
+            border-radius: 50%;
+            background-image: url(./img/facebook/svgexport-11.svg);
+            background-repeat: no-repeat;
+            background-size: 50%;
+            background-position: center center;
+            float: right;
+            margin-right: 8px;
+            margin-top: 6px;
+        }
+        #right-icon3{
+            width: 40px;
+            height: 40px;
+            background-color: #eee;
+            border-radius: 50%;
+            background-image: url(./img/facebook/svgexport-12.svg);
+            background-repeat: no-repeat;
+            background-size: 50%;
+            background-position: center center;
+            float: right;
+            margin-right: 8px;
+            margin-top: 6px;
+        }
+        #box-all{
+            width: 100%;
+            background-color: #fff;
+            margin: auto;
+        }
+        #banner{
+            width: 65%;
+            height: 360px;
+            background-color: #aaa;
+            background-image: url(./img/dog-3.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 20%;
+            position: relative;
+            margin: auto;
+            top: 55px;
+            border-radius: 15px;;
+        }
+        #avatar{
+            background-color: #f8da62;
+            border:5px solid #fff;
+            border-radius: 50%;
+            width: 170px;
+            height: 170px;
+            background-image: url(./img/facebook/avatar-cut-2.jpg);
+            background-size: cover;
+            position: absolute;
+            left: 30px;
+            bottom: -155px;
+            /* box-shadow: 5px 5px 4px #757575; */
+        }
+        #avatar-camera{
+            width: 36px;
+            height: 36px;
+            position: absolute;
+            background-color: #eee;
+            border-radius: 50%;
+            right: 0px;
+            bottom: 20px;
+            background-image: url(./img/facebook/camera.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+
+        }
+        #name-box{
+            width: 500px;
+            height: 100px;
+            position: relative;
+            right: -190px;
+            top: 40px;
+            font-family: 微軟正黑體;
+        }
+        #name-text{
+            font-size: 32px;
+            color:#050505;
+        }
+        #chiese-name{
+            float:left;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        #english-name{
+            float:left;
+            margin-left: 15px;
+            font-size: 28px;
+        }
+        #friend-text{
+            clear: left;
+            font-weight: bold;
+            color: #65676b;
+        }
+        #friend-pic{
+            padding: 6px 2px;
+        }
+        #friend-pic1{
+            width: 32px;
+            height: 32px;
+            background-image: url(./img/dog-avatar/1.jpg);
+            background-size: cover;
+            border-radius: 50%;
+            border: 1px solid white;
+            position: relative;
+            z-index: 8;
+        }
+        #friend-pic2{
+            width: 32px;
+            height: 32px;
+            background-image: url(./img/dog-avatar/2.jpg);
+            background-size: cover;
+            border-radius: 50%;
+            border: 1px solid white;
+            position: absolute;
+            left: 26px;
+            bottom: -4px;
+            z-index: 7;
+        }
+        #friend-pic3{
+            width: 32px;
+            height: 32px;
+            background-image: url(./img/dog-avatar/3.jpg);
+            background-size: cover;
+            border-radius: 50%;
+            border: 1px solid white;
+            position: absolute;
+            left: 50px;
+            bottom: -4px;
+            z-index: 6;
+        }
+        #friend-pic4{
+            width: 32px;
+            height: 32px;
+            background-image: url(./img/dog-avatar/4.jpg);
+            background-size: cover;
+            border-radius: 50%;
+            border: 1px solid white;
+            position: absolute;
+            left: 74px;
+            bottom: -4px;
+            z-index: 5;
+        }
+        #friend-pic5{
+            width: 32px;
+            height: 32px;
+            background-image: url(./img/dog-avatar/5.jpg);
+            background-size: cover;
+            border-radius: 50%;
+            border: 1px solid white;
+            position: absolute;
+            left: 98px;
+            bottom: -4px;
+            z-index: 4;
+        }
+        #friend-pic6{
+            width: 32px;
+            height: 32px;
+            background-image: url(./img/dog-avatar/6.jpg);
+            background-size: cover;
+            border-radius: 50%;
+            border: 1px solid white;
+            position: absolute;
+            left: 122px;
+            bottom: -4px;
+            z-index: 3;
+        }
+        #friend-pic7{
+            width: 32px;
+            height: 32px;
+            background-image: url(./img/dog-avatar/7.jpg);
+            background-size: cover;
+            border-radius: 50%;
+            border: 1px solid white;
+            position: absolute;
+            left: 146px;
+            bottom: -4px;
+            z-index: 2;
+        }
+        #friend-pic8{
+            width: 32px;
+            height: 32px;
+            background-image: url(./img/dog-avatar/8.jpg);
+            background-size: cover;
+            border-radius: 50%;
+            border: 1px solid white;
+            position: absolute;
+            left: 170px;
+            bottom: -4px;
+            z-index: 1;
+        }
+        #banner-right-bt{
+            position: absolute;
+            right: 30px;
+            bottom: 15px;
+        }
+        #bt1{
+            width: 166px;
+            height: 20px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 5px;
+            text-align: center;
+            padding: 9px 0px;
+        }
+        #bt1-img{
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            background-image: url(./img/facebook/kOz-2YBU3-X.png);
+            background-position: 1px -443px;
+            background-size: auto;
+            background-repeat: no-repeat;
+            filter: invert(100%);
+            left: 8px;
+            top: 10px;
+        }
+        #bt1-text{
+            color:#fff;
+            font-size: 15px;
+            position: absolute;
+            left: 30px;
+            font-weight: bold;
+        }
+        #bt2{
+            margin-top: 6px;
+            width: 166px;
+            height: 20px;
+            background-color: rgba(0, 0, 0, 0.4);
+            color:#fff;
+            font-size: 15px;
+            border-radius: 5px;
+            text-align: center;
+            padding: 9px 0px;
+            position: relative;
+        }
+        #bt2-img{
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            background-image: url(./img/facebook/kOz-2YBU3-X.png);
+            background-position: 1px -460px;
+            background-size: auto;
+            background-repeat: no-repeat;
+            filter: invert(100%);
+            left: 25px;
+            top: 10px;
+        }
+        #bt2-text{
+            color:#fff;
+            font-size: 15px;
+            position: absolute;
+            left: 50px;
+            font-weight: bold;
+        }
+        #breadcrumb{
+            background-color: #fff;
+            height: 63px;
+            width: 60%;
+            margin: auto;
+            position: relative;
+            top: 230px;
+            border-top: 1px solid #aaa;
+
+        }
+        #top-btn{
+            width: 360px;
+            height: 50px;
+            position: absolute;
+            right: 0px;
+            top: -80px;
+        }
+        #add-btn{
+            float: left;
+            width: 151px;
+            height: 36px;
+            background-color: #1B74E4;
+            margin: 4px;
+            position: relative;
+            border-radius: 5px;
+        }
+        #add-icon{
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            top: 10px;
+            left: 11px;
+            background-image: url(./img/facebook/add.png);
+            background-size: cover;
+            filter: invert(100%);
+        }
+        #add-text{
+            position: absolute;
+            top: 8px;
+            left: 30px;
+            font-size: 15px;
+            font-weight: bold;
+            color:#fff;
+        }
+        #edit-btn{
+            float: left;
+            width: 136px;
+            height: 36px;
+            background-color: #eee;
+            margin: 4px;
+            border-radius: 5px;
+        }
+        #edit-icon{
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            top: 14px;
+            left: 175px;
+            background-image: url(./img/facebook/edit.png);
+            background-size: cover;
+        }
+        #edit-text{
+            position: absolute;
+            top: 11px;
+            left: 194px;
+            font-size: 15px;
+            font-weight: bold;
+            color:#000;
+        }
+        #more-btn{
+            float: left;
+            width: 48px;
+            height: 36px;
+            background-color: #eee;
+            margin: 4px;
+            border-radius: 5px;
+            position: relative;
+        }
+        #more-btn-icon{
+            width: 16px;
+            height: 16px;
+            background-image: url(./img/facebook/kOz-2YBU3-X.png);
+            background-repeat: no-repeat;
+            background-size: auto;
+            background-position: 0px -478px;
+            margin: auto;
+            position: absolute;
+            top: 10px;
+            left:16px;
+        }
+        #dots-btn{
+            float: right;
+            width: 48px;
+            height: 36px;
+            background-color: #eee;
+            margin: 4px;
+            border-radius: 5px;
+            position: relative;
+            top: 45px;
+            text-align: center;
+            font-size: 30px;
+            line-height: 15px;
+        }
+        #post-btn{
+            width: 30px;
+            height: 60px;
+            border-bottom: 3px solid #1B74E4;
+            padding: 0px 16px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 60px;
+            color:#1B74E4;
+            float: left;
+        }
+        #about-btn{
+            width: 30px;
+            height: 60px;
+            padding: 0px 16px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 60px;
+            color:#65676B;
+            float: left;
+        }
+        #friend-btn{
+            width: 30px;
+            height: 60px;
+            padding: 0px 16px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 60px;
+            color:#65676B;
+            float: left;
+        }
+        #photo-btn{
+            width: 30px;
+            height: 60px;
+            padding: 0px 16px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 60px;
+            color:#65676B;
+            float: left;
+        }
+        #video-btn{
+            width: 30px;
+            height: 60px;
+            padding: 0px 16px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 60px;
+            color:#65676B;
+            float: left;
+        }
+        #check-btn{
+            width: 60px;
+            height: 60px;
+            padding: 0px 16px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 60px;
+            color:#65676B;
+            float: left;
+        }
+        #more1-btn{
+            width: 30px;
+            height: 60px;
+            padding: 0px 16px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 60px;
+            color:#65676B;
+            float: left;
+            position: relative;
+        }
+        #arrow-icon{
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            top: 23px;
+            right: -5px;
+            background-image: url(./img/facebook/arrow.png);
+            background-size: 70% 100%;
+            background-repeat: no-repeat;
+            filter:invert(50%);
+        }
+        #content{
+            width: 100%;
+            height: 1000px;
+            background-color: #eee;
+            position: relative;
+            top: 230px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box-all">
+        <div id="nav">
+            <div id="box-left">
+                <div id="logo"></div>
+                <div id="search">
+                    <div id="s-icon"></div>
+                    <div id="s-text">搜尋 Facebook</div>
+                </div>
+            </div>
+            <div id="box-middle">
+                <div id="middle-icon1"></div>
+                <div id="middle-icon2"></div>
+                <div id="middle-icon3"></div>
+                <div id="middle-icon4"></div>
+            </div> 
+            <div id="box-right">
+                <div id="avatar-s"></div>
+                <div id="right-icon1"></div>
+                <div id="right-icon2"></div>
+                <div id="right-icon3"></div>
+            </div>   
+        </div>
+        <div id="banner">
+            <div id="avatar">
+                <div id="avatar-camera"></div>
+                <div id="name-box">
+                    <div id="name-text">
+                        <div id="chiese-name">曾邊牧</div>
+                        <div id="english-name">( Border Collie Tseng )</div>
+                    </div>
+                    <div id="friend-text">830 隻狗朋友</div>
+                    <div id="friend-pic">
+                        <div id="friend-pic1"></div>
+                        <div id="friend-pic2"></div>
+                        <div id="friend-pic3"></div>
+                        <div id="friend-pic4"></div>
+                        <div id="friend-pic5"></div>
+                        <div id="friend-pic6"></div>
+                        <div id="friend-pic7"></div>
+                        <div id="friend-pic8"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="banner-right-bt">
+                <div id="bt1">
+                    <div id="bt1-img"></div>
+                    <div id="bt1-text">使用虛擬替身建立</div> 
+                </div>
+                <div id="bt2">
+                    <div id="bt2-img"></div>
+                    <div id="bt2-text">編輯封面照片</div>
+                </div>
+            </div>
+        </div>
+        <div id="breadcrumb">
+            <div id="top-btn">
+                <div id="add-btn">
+                    <div id="add-icon"></div>
+                    <div id="add-text">新增到限時動態</div>
+                </div>
+                <div id="edit-btn">
+                    <div id="edit-icon"></div>
+                    <div id="edit-text">編輯個人檔案</div>
+                </div>
+                <div id="more-btn">
+                    <div id="more-btn-icon"></div>
+                </div>
+                <div id="dots-btn">...</div>
+            </div>
+            <div id="post-btn">貼文</div>
+            <div id="about-btn">關於</div>
+            <div id="friend-btn">朋友</div>
+            <div id="photo-btn">照片</div>
+            <div id="video-btn">影片</div>
+            <div id="check-btn">打卡動態</div>
+            <div id="more1-btn">更多
+                <div id="arrow-icon"></div>
+            </div>
+        </div>
+        <div id="content"></div>
+    </div>
+</body>
+</html>

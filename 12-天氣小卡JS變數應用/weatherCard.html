@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>36小時天氣預報☀</title>
+    <!-- google font的連結 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cute+Font&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-size: 18px;
+            font-family: 'Cute Font', 微軟正黑體;
+        }
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        .container {
+            width: 100%;
+            background:linear-gradient(to right,#365673 10%,#4AB0D9);
+            display:flex;
+        }
+
+        /* 地區的導覽列 */
+        .nav{
+            min-width: 200px;
+            min-height: 100vh;
+            background-color: #fff;
+            padding: 30px 0px;
+            writing-mode:vertical-lr;
+            display:flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* 每區的按鈕 */
+        .tabs {
+            display:flex;
+            gap: 15px;
+        }
+        .tab {
+            background-color: #44AFF2;
+            letter-spacing: 2px;
+            padding: 10px;
+            border-radius: 10px 0px 0px 10px;
+            color: #fff;
+            cursor: pointer;
+            transition: .5s;
+        }
+        .tab.active{
+            background-color: #365673;
+        }
+        
+        .tab:hover{
+            background-color: #365673;
+        }
+        .subject{
+            margin-left: 50px;
+            font-size: 36px;
+            letter-spacing: 5px;
+            color:#365673;
+            font-weight: bold;
+        }
+
+        /* 天氣小卡 */
+        .content{
+            padding: 30px;
+            display:flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            gap: 15px;
+        }
+        .card{
+            width: 400px;
+            height: 220px;
+            background-color: #fff;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 10px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 10px #687B8C;
+            display:none;
+        }
+        .card.active{
+            display:flex;
+        }
+        .text{
+            padding: 10px;
+            height: 200px;
+        }
+        .title{
+            font-size: 36px;
+            padding-top: 10px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color:#365673;
+            
+        }
+        
+        .temperature{
+            font-size: 45px;
+            line-height: 45px;
+            color:#e78a07;
+        }
+        .weather-pic{
+            padding: 10px;
+            height: 200px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img{
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+        }
+        .rain{
+            font-family: 微軟正黑體;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <div class="subject">天氣預報☀</div>
+            <div class="tabs">
+                <div class="tab active">全部地區</div>
+                <div class="tab">北部地區</div>
+                <div class="tab">中部地區</div>
+                <div class="tab">南部地區</div>
+                <div class="tab">東部地區</div>
+                <div class="tab">離島地區</div>
+            </div>
+        </div>
+        <div class="content">
+            <!-- <div class="card">
+                <div class="text">
+                    <div class="title">台北市</div>
+                    <div class="weather">晴時多雲偶陣雨</div>
+                    <div class="temperature">18°C-34°C</div>
+                    <div class="rain">40%</div>
+                </div>
+                <div class="weather-pic">
+                    <img src="https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/06.svg" alt="https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/06.svg">
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <script>
+        //抓出所要使用的區域
+        let content = document.querySelector('.content');
+        let tabs = document.querySelectorAll('.tab');
+
+        //利用氣象局給予的資料來使用 取用用fetch 因為會非同步處理所以用.then連接
+        fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-21A65304-7521-443E-ADA2-84B73818DD7D')
+            //將字串內容轉成json資料
+            .then((response) => {
+                return response.json();
+            })
+            //再把它放入我們宣告的內容裡
+            .then((data) => {
+                console.log(data);
+                let myData = data.records.location;
+                //必須先宣告 之後才可以用
+                let img_path ;
+
+                //生成卡片
+                myData.forEach((item, index) => {
+                    //先判別再生成 判別天氣狀態內容給予相符的圖片
+                    let weather =[item.weatherElement[0].time[1].parameter];
+                    //如果他的value為多少就顯示什麼照片
+                    let sunnyNum = ['1','24'];
+                    let SunCloudNum = ['2','3','25','26'];
+                    let cloudNum = ['4','5','6','7','23'];
+                    let windNum = ['27','28','42'];
+                    let rainNum = ['8','9','10','11','12','13','14','19','20','29','30','31','32','37','38','39'];
+                    let thunderNum = ['15','16','17','18','21','22','33','34','35','36','41','42'];
+
+                    console.log(weather[0].parameterValue);
+                    if(sunnyNum.includes(weather[0].parameterValue)){
+                        img_path = './img/sun.png';
+                    }else if(SunCloudNum.includes(weather[0].parameterValue)){
+                        img_path = './img/cloudAndSun.png';
+                    }else if(cloudNum.includes(weather[0].parameterValue)){
+                        img_path = './img/cloud.png';
+                    }else if(windNum.includes(weather[0].parameterValue)){
+                        img_path = './img/windy.png';
+                    }else if(rainNum.includes(weather[0].parameterValue)){
+                        img_path = './img/rain.png';
+                    }else if(thunderNum.includes(weather[0].parameterValue)){
+                        img_path = './img/thouder.png';
+                    }else{
+                        img_path = './img/cloud.png';
+                    }
+                    //生成每個區塊 層層的撈資料並用console.log看是否正確
+                    content.innerHTML += `
+                    <div class="card">
+                        <div class="text">
+                            <div class="title">${item.locationName}</div>
+                            <div class="temperature">${item.weatherElement[2].time[1].parameter.parameterName}°C-${item.weatherElement[4].time[1].parameter.parameterName}°C</div>
+                            <div class="weather">
+                                <i class="fa-solid fa-cloud" style="color: #365673;"></i>
+                                ${item.weatherElement[0].time[1].parameter.parameterName}</div>
+                            <div class="rain">
+                                <i class="fa-solid fa-umbrella" style="color: #365673;"></i>
+                                降雨機率：${item.weatherElement[1].time[1].parameter.parameterName}%</div>
+                        </div>
+                        <div class="weather-pic">
+                            <img src="${img_path}" alt="">
+                        </div>
+                    </div>
+                    `;
+                });
+                
+
+                //判別是什麼區域的並生成相對應的地區小卡
+                
+                let cards = document.querySelectorAll('.card');
+                cards.forEach((card) => {
+                                card.classList.add('active');
+                            })
+                
+                //每個都要綁上監聽事件並且移除active
+                tabs.forEach((tab) => {
+                    tab.addEventListener('click',() => {
+                        tabs.forEach((item) => {
+                            item.classList.remove('active');
+                            cards.forEach((card) => {
+                                card.classList.remove('active');
+                            })
+                        })
+                        //在相對應的地區放上對應的小卡
+                        tab.classList.add('active');
+                        //北部地區
+                        if(tabs[1].classList.contains('active')){
+                            let arr_n = [1,3,4,5,7,13,18];
+                            arr_n.forEach((num0) => {
+                                cards[num0].classList.add('active');
+                            });
+                        //中部地區
+                        }else if(tabs[2].classList.contains('active')){
+                            let arr_c = [8,9,11,14,20];
+                            arr_c.forEach((num1) => {
+                                cards[num1].classList.add('active');
+                            });
+                        //南部地區
+                        }else if(tabs[3].classList.contains('active')){
+                            let arr_s = [0,2,6,15,17];
+                            arr_s.forEach((num2) => {
+                                cards[num2].classList.add('active');
+                            });
+                        //東部地區
+                        }else if(tabs[4].classList.contains('active')){
+                            let arr_e = [10,12];
+                            arr_e.forEach((num3) => {
+                                cards[num3].classList.add('active');
+                            });
+                        //離島地區
+                        }else if(tabs[5].classList.contains('active')){
+                            let arr_e = [16,19,21];
+                            arr_e.forEach((num4) => {
+                                cards[num4].classList.add('active');
+                            });
+                        }else{
+                            cards.forEach((card) => {
+                                card.classList.add('active');
+                            })
+                        }
+
+                        // if(tabs[0].classList.contains('active')){
+                        //     cards[1].classList.add('active');
+                        //     cards[3].classList.add('active');
+                        //     cards[4].classList.add('active');
+                        //     cards[5].classList.add('active');
+                        //     cards[7].classList.add('active');
+                        //     cards[13].classList.add('active');
+                        //     cards[18].classList.add('active');
+                        // //中部地區
+                        // }else if(tabs[1].classList.contains('active')){
+                        //     cards[8].classList.add('active');
+                        //     cards[9].classList.add('active');
+                        //     cards[11].classList.add('active');
+                        //     cards[14].classList.add('active');
+                        //     cards[20].classList.add('active');
+                        // //南部地區
+                        // }else if(tabs[2].classList.contains('active')){
+                        //     cards[0].classList.add('active');
+                        //     cards[2].classList.add('active');
+                        //     cards[6].classList.add('active');
+                        //     cards[15].classList.add('active');
+                        //     cards[17].classList.add('active');
+                        // //東部地區
+                        // }else if(tabs[3].classList.contains('active')){
+                        //     cards[10].classList.add('active');
+                        //     cards[12].classList.add('active');
+                        // //離島地區
+                        // }else{
+                        //     cards[16].classList.add('active');
+                        //     cards[19].classList.add('active');
+                        //     cards[21].classList.add('active');
+                        // }
+                    })     
+                })
+            })
+
+    </script>
+</body>
+</html>

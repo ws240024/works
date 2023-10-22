@@ -1,0 +1,24 @@
+.ham-menu{
+    display:block;
+    background-color: red;
+    width: 40px;
+    height: 40px;
+}
+
+.mobile-menu{
+    display:none;
+    width: 600px;
+    background-color: yellow;
+    z-index: 20;
+}
+@media (max-width: 860px){
+    .ham-menu{
+        display:block;
+    }
+    #ham-switch:checked ~ .mobile-menu{
+        display:block;
+    }
+    #ham-switch:not(:checked) ~ .mobile-menu{
+        display:none;
+    }
+}

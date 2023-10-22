@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap-Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+          font-family: 'ADLaM Display';
+        }
+        body{
+          margin: 0px;
+          padding: 0px;
+        }
+        .carousel-pic{
+            height: 400px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+        .carousel-inner .carousel-item img {
+            height: 400px;
+            object-fit: cover;
+        }
+
+        #cards .card img {
+          width: 200px;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+        #cards .card{
+          border: unset;
+        }
+
+        .photos .row img{
+          max-width: 500px;
+          max-height: 500px;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav id="nav" class="navbar fixed-top navbar-expand-lg bg-body-tertiary navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#banner">Summer</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#banner">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#cards">Celebrity</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#Sayings">Sayings</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+    </nav>
+    <main>
+        <!-- 輪播照片 -->
+        <section id="banner" class="carousel-pic container-fluid">
+            <div id="carouselExampleCaptions" class="carousel slide">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="./img/summer-1.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block w-50 m-auto">
+                      <h1 style="text-shadow: 3px 3px 0px #555;">SUNBATHING</h1>
+                      <p style="text-shadow: 1px 1px 3px #555;">Sunbathing, which is the act of sitting or lying in the sun, sometimes with the intent to tan, may have some health benefits if done properly.</p>
+                      <span><a href="https://www.healthline.com/health/sunbathing#What-sunbathing-means" class="btn btn-outline-light">Learn more</a></span>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/summer-5.avif" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h1 style="text-shadow: 3px 3px 0px #555;">SURFING</h1>
+                      <p style="text-shadow: 1px 1px 3px #555;">Surfers enjoy the physical benefits of paddling and surfing, being in the fresh air, as well as the overall benefits of surfing.</p>
+                      <span><a href="https://www.betterhealth.vic.gov.au/health/healthyliving/surfing-health-benefits" class="btn btn-outline-light">Learn more</a></span>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/summer-4.avif" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h1 style="text-shadow: 3px 3px 0px #555;">SWIMMING</h1>
+                      <p style="text-shadow: 1px 1px 3px #555;">Swimming is an excellent way to work your entire body and cardiovascular system. An hour of swimming burns almost as many calories as running, without all the impact on your bones and joints.</p>
+                      <a href="https://www.healthline.com/health/benefits-of-swimming" class="btn btn-outline-light">Learn more</a>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+
+
+        <!-- 卡片們 -->
+        <section id="cards" class="container">
+          <div class="row p-5 justify-content-center">
+            <div class="card p-4 col-12 col-md-4">
+              <img src="./img/avater1.jpg" class="m-auto card-img-top" alt="...">
+              <div class="card-body">
+                <h3 class="card-title text-center">Michael Phelps</h3>
+                <p class="card-text">"You can't put a limit on anything. The more you dream, the farther you get."</p>
+                <a href="https://olympics.com/en/athletes/michael-phelps-ii" class="btn btn-outline-warning">About Michael</a>
+              </div>
+            </div>
+            <div class="card p-4 col-12 col-md-4">
+              <img src="./img/avater2.jpg" class="m-auto card-img-top" alt="...">
+              <div class="card-body">
+                <h3 class="card-title text-center">Carissa Moore</h3>
+                <p class="card-text">You might know Hawaiian surfer Carissa Moore for her five world titles, but beyond her silverware is a radiant soul with a heart that could power a nation.</p>
+                <a href="https://www.redbull.com/int-en/carissa-moore-career-portrait" class="btn btn-outline-warning">About Carissa</a>
+              </div>
+            </div>
+
+            <div class="card p-4 col-12 col-md-4">
+              <img src="./img/avater3.jpg" class="m-auto card-img-top" alt="...">
+              <div class="card-body">
+                <h3 class="card-title text-center">Cindy Liu</h3>
+                <p class="card-text">We’re not all born in the summer. In fact, there’s an entire calendar year to be passionate about sunbathing.</p>
+                <a href="#" class="btn btn-outline-warning">About Cindy</a>
+              </div>
+            </div>
+          </div>
+          <hr>
+        </section>
+
+        <!-- 下面的欄位 -->
+        <section id="Sayings" class="container photos">
+          <div class="row w-100 p-5 d-flex align-items-center m-auto">
+            <div class="col-md-7">
+              <h1 class="mb-3 p-3 text-center">The Summer I Turned Pretty</h1>
+              <p class="mb-5 p-3">"Summer's the same. We're the ones who are changing."</p>
+            </div>
+            <div class="col-md-5 text-center p-0">
+              <img src="./img/pc-1.jpg" alt="">
+            </div>
+          </div>
+          <hr>
+        </section>
+
+        <section class="container photos">
+          <div class="row w-100 p-5 d-flex align-items-center m-auto">
+            <div class="col-md-7 order-md-2">
+              <h1 class="mb-3 p-3 text-center">Bon Jovi</h1>
+              <p class="mb-5 p-3">"It's like a beach blanket and a bottle of wine, it feels something like summertime."</p>
+            </div>
+            <div class="col-md-5 text-center p-0 order-md-1">
+              <img src="./img/pc-2.jpg" alt="">
+            </div>
+          </div>
+          <hr>
+        </section>
+
+        <section class="container photos">
+          <div class="row w-100 p-5 d-flex align-items-center m-auto">
+            <div class="col-md-7">
+              <h1 class="mb-3 p-3 text-center">Mungo Jerry</h1>
+              <p class="mb-5 p-3">"In the summertime, when the weather is hot, you can stretch right up and touch the sky."</p>
+            </div>
+            <div class="col-md-5 text-center p-0">
+              <img src="./img/pc-3.jpg" alt="">
+            </div>
+          </div>
+        </section>
+    </main>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

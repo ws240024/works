@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天氣預報☀️</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Kosugi Maru',微軟正黑體;
+        }
+
+        .banner {
+            height: 300px;
+            background-image: url(./img/bgi.jpg);
+            background-size: cover;
+            background-position: 50% 18%;
+        }
+
+        .nav {
+            min-width: 100px;
+        }
+
+        img {
+            min-width: 150px;
+            height: 150px;
+            animation: move 2s linear infinite;
+        }
+        @keyframes move{
+            50%{
+                transform:translateY(20px);
+            }
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: #ffc107;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="banner container-fluid p-5 mb-4"></div>
+        <div class="d-flex align-items-start container">
+            <div class="nav flex-column nav-pills me-3">
+                <button class="nav-link btn btn-outline-warning mb-2 mb-2" :class="{ active : isActive === 'all'}"
+                    @click="isActive = 'all',changeArea(0)" type="button">全部地區</button>
+                <button class="nav-link btn btn-outline-warning mb-2" :class="{ active : isActive === 'north'}"
+                    @click="isActive = 'north',changeArea(1)" type="button">北部地區</button>
+                <button class="nav-link btn btn-outline-warning mb-2" :class="{ active : isActive === 'center'}"
+                    @click="isActive = 'center',changeArea(2)" type="button">中部地區</button>
+                <button class="nav-link btn btn-outline-warning mb-2" :class="{ active : isActive === 'south'}"
+                    @click="isActive = 'south',changeArea(3)" type="button">南部地區</button>
+                <button class="nav-link btn btn-outline-warning mb-2" :class="{ active : isActive === 'east'}"
+                    @click="isActive = 'east',changeArea(4)" type="button">東部地區</button>
+                <button class="nav-link btn btn-outline-warning" :class="{ active : isActive === 'island'}"
+                    @click="isActive = 'island',changeArea(5)" type="button">離島地區</button>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade show d-flex flex-wrap gap-2" tabindex="0">
+                    <!-- 卡片生成 -->
+                    <div v-for="(item ,index) in nowCity" :key="index">
+                        <div class="card p-3" style="width: 18rem;">
+                            <h5 class="card-title fs-2 mb-0 text-center border-end border-start border-warning border-5" style="color:#ffc107">{{ item }}</h5>
+                            <img class="card-img-top m-auto w-50" :src="imgPath(item)">
+                            <p class="card-text">
+                                <div class="temperature fs-3 fw-bold text-center" style="color: #365673;">
+                                    {{ orgData[item].lowTem }}°C - {{ orgData[item].hightTem }}°C
+                                </div>
+                                <div class="weather mx-3">
+                                    <i class="fa-solid fa-cloud" style="color: #365673;"></i>
+                                    {{orgData[item].weather}}
+                                </div>
+                                <div class="rain mx-3">
+                                    <i class="fa-solid fa-umbrella" style="color: #365673;"></i>
+                                    降雨機率：{{ orgData[item].rain }}%
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script type="module">
+        import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js';
+        const app = createApp({
+            data() {
+                return {
+                    isActive: 'all',
+                    orgData: {},
+                    cityAll: [
+                        ['基隆市', '新北市', '臺北市', '桃園市', '新竹市', '新竹縣', '苗栗縣', '臺中市', '南投縣', '彰化縣', '雲林縣', '嘉義市', '嘉義縣', '臺南市', '高雄市', '屏東縣', '宜蘭縣', '花蓮縣', '臺東縣', '澎湖縣', '金門縣', '連江縣'],
+                        ['基隆市', '新北市', '臺北市', '桃園市', '新竹市', '新竹縣'],
+                        ['苗栗縣', '臺中市', '南投縣', '彰化縣', '雲林縣'],
+                        ['嘉義市', '嘉義縣', '臺南市', '高雄市', '屏東縣'],
+                        ['宜蘭縣', '花蓮縣', '臺東縣'],
+                        ['澎湖縣', '金門縣', '連江縣'],
+                    ],
+                    nowCity: [],
+                }
+            },
+            methods: {
+                fetch_data() {
+                    let url = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-21A65304-7521-443E-ADA2-84B73818DD7D';
+                    fetch(url)
+                        .then((response) => {
+                            return response.json();
+                        })
+                        .then((dataGet) => {
+                            console.log(dataGet);
+                            this.organizationData(dataGet);
+                            this.changeArea(0);
+                        })
+                },
+                // 整理資料
+                organizationData(dataGet) {
+                    const locationAll = dataGet.records.location;
+                    locationAll.forEach((location, index) => {
+                        let locationName = location.locationName;
+                        let loc_wE0_t0 = location.weatherElement[0].time[0];
+                        let lowTem = location.weatherElement[2].time[1].parameter.parameterName;
+                        let hightTem = location.weatherElement[4].time[1].parameter.parameterName;
+                        let weather = location.weatherElement[0].time[1].parameter.parameterName;
+                        let weatherNum = location.weatherElement[0].time[1].parameter.parameterValue;
+                        let rain = location.weatherElement[1].time[1].parameter.parameterName;
+                        this.orgData[locationName] = {
+                            'locationName': locationName,
+                            'lowTem': lowTem,
+                            'hightTem': hightTem,
+                            'weather': weather,
+                            'rain': rain,
+                            'weatherNum': weatherNum,
+                        };
+                    });
+                },
+                //改變地區 利用index相符
+                changeArea(index) {
+                    this.nowCity = this.cityAll[index];
+                },
+                //天氣照片的判斷
+                imgPath(Num) {
+                    let imgPath = '';
+                    let sunnyNum = ['1', '24'];
+                    let SunCloudNum = ['2', '3', '25', '26'];
+                    let cloudNum = ['4', '5', '6', '7', '23'];
+                    let windNum = ['27', '28', '42'];
+                    let rainNum = ['8', '9', '10', '11', '12', '13', '14', '19', '20', '29', '30', '31', '32', '37', '38', '39'];
+                    let thunderNum = ['15', '16', '17', '18', '21', '22', '33', '34', '35', '36', '41', '42'];
+                    if (sunnyNum.includes(this.orgData[Num].weatherNum)) {
+                        imgPath = './img/sun.png';
+                    } else if (SunCloudNum.includes(this.orgData[Num].weatherNum)) {
+                        imgPath = './img/cloudAndSun.png';
+                    } else if (cloudNum.includes(this.orgData[Num].weatherNum)) {
+                        imgPath = './img/cloud.png';
+                    } else if (windNum.includes(this.orgData[Num].weatherNum)) {
+                        imgPath = './img/windy.png';
+                    } else if (rainNum.includes(this.orgData[Num].weatherNum)) {
+                        imgPath = './img/rain.png';
+                    } else if (thunderNum.includes(this.orgData[Num].weatherNum)) {
+                        imgPath = './img/thouder.png';
+                    } else {
+                        imgPath = './img/cloud.png';
+                    }
+                    return imgPath;
+                },
+
+            },
+            mounted() {
+                this.fetch_data();
+            },
+        });
+        app.mount('#app');
+    </script>
+
+</body>
+
+</html>

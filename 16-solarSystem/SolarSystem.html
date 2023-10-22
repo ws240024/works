@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <title>Solar System</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .label {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+
+    <script type="importmap">
+        {
+            "imports": {
+            "three": "https://unpkg.com/three@latest/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@latest/examples/jsm/"
+            }
+        }
+    </script>
+
+    <!-- three.js導入內容 -->
+    <script type="module">
+        // 引入three.js主體
+        import * as THREE from 'three';
+
+        // 引入three.js的附加功能 針對用滑鼠控制
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+        import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+
+        let labelRenderer = new CSS2DRenderer();
+        labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        labelRenderer.domElement.style.position = "absolute";
+        labelRenderer.domElement.style.pointerEvents = "none";
+        labelRenderer.domElement.style.top = "0px";
+        document.body.appendChild(labelRenderer.domElement);
+
+        // 生成一個渲染器------------------------------------
+        const renderer = new THREE.WebGLRenderer();
+        // 設置渲染器的尺寸
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        // 增加一個canvas的屬性 renderer.domElement裡的內容就是canvas 
+        document.body.appendChild(renderer.domElement);
+
+        // 模型架構
+        // sphere => 球體(1.半徑-大小 2.縱切面數 3.切面數)
+        const geometrySun = new THREE.SphereGeometry(4, 32, 16);
+        const geometryEarth = new THREE.SphereGeometry(2, 32, 26);
+        const geometryMoon = new THREE.SphereGeometry(1, 32, 26);
+        const geometryMercury = new THREE.SphereGeometry(2, 31, 16);
+        const geometryVenus = new THREE.SphereGeometry(2, 32, 16);
+        const geometryMars = new THREE.SphereGeometry(2, 32, 16);
+        const geometryJupiter = new THREE.SphereGeometry(2, 32, 16);
+        const geometrySaturn = new THREE.SphereGeometry(2, 32, 16);
+        const geometryUranus = new THREE.SphereGeometry(2, 32, 16);
+        const geometryNeptune = new THREE.SphereGeometry(2, 32, 16);
+        const geometryPluto = new THREE.SphereGeometry(2, 32, 16);
+        const geometryFake = new THREE.SphereGeometry(2, 32, 16);
+        const geometryStar = new THREE.SphereGeometry(300, 32, 16);
+
+
+        // 載入材質球的貼圖
+        const earthtexture = new THREE.TextureLoader().load('./01-texture/2k_earth_daymap.jpg');
+        const moontexture = new THREE.TextureLoader().load('./01-texture/2k_moon.jpg');
+        const suntexture = new THREE.TextureLoader().load('./01-texture/2k_sun.jpg');
+
+        const mercurytexture = new THREE.TextureLoader().load('./01-texture/2k_mercury.jpg');
+        const venustexture = new THREE.TextureLoader().load('./01-texture/2k_venus_surface.jpg');
+        const marstexture = new THREE.TextureLoader().load('./01-texture/2k_mars.jpg');
+        const jupitertexture = new THREE.TextureLoader().load('./01-texture/2k_jupiter.jpg');
+        const saturntexture = new THREE.TextureLoader().load('./01-texture/2k_saturn.jpg');
+        const uranustexture = new THREE.TextureLoader().load('./01-texture/2k_uranus.jpg');
+        const neptunetexture = new THREE.TextureLoader().load('./01-texture/2k_neptune.jpg');
+        const plutotexture = new THREE.TextureLoader().load('./01-texture/plutomap2k.jpg');
+        const startexture = new THREE.TextureLoader().load('./01-texture/2k_stars_milky_way.jpg');
+
+
+        const materialMoon = new THREE.MeshStandardMaterial({
+            map: moontexture
+        });
+        const materialSun = new THREE.MeshBasicMaterial({
+            map: suntexture,
+        });
+        const materialEarth = new THREE.MeshStandardMaterial({ map: earthtexture });
+
+        const materialMercury = new THREE.MeshStandardMaterial({
+            map: mercurytexture
+        });
+        const materialVenus = new THREE.MeshStandardMaterial({
+            map: venustexture
+        });
+        const materialMars = new THREE.MeshStandardMaterial({
+            map: marstexture
+        });
+        const materialJupiter = new THREE.MeshStandardMaterial({
+            map: jupitertexture
+        });
+        const materialSaturn = new THREE.MeshStandardMaterial({
+            map: saturntexture
+        });
+        const materialUranus = new THREE.MeshStandardMaterial({
+            map: uranustexture
+        });
+        const materialNeptune = new THREE.MeshStandardMaterial({
+            map: neptunetexture
+        });
+        const materialPluto = new THREE.MeshStandardMaterial({
+            map: plutotexture
+        });
+        const materialFake = new THREE.MeshStandardMaterial({
+            color: 0xffffff
+        });
+        const materialStar = new THREE.MeshBasicMaterial({
+            map: startexture,
+            side: THREE.DoubleSide
+        });
+
+        // 宣告父層的方塊 也宣告子層的方塊
+        const earth = new THREE.Mesh(geometryEarth, materialEarth);
+        const moon = new THREE.Mesh(geometryMoon, materialMoon);
+        const sun = new THREE.Mesh(geometrySun, materialSun);
+
+        const mercury = new THREE.Mesh(geometryMercury, materialMercury);
+        const venus = new THREE.Mesh(geometryVenus, materialVenus);
+        const mars = new THREE.Mesh(geometryMars, materialMars);
+        const jupiter = new THREE.Mesh(geometryJupiter, materialJupiter);
+        const saturn = new THREE.Mesh(geometrySaturn, materialSaturn);
+        const uranus = new THREE.Mesh(geometryUranus, materialUranus);
+        const neptune = new THREE.Mesh(geometryNeptune, materialNeptune);
+        const pluto = new THREE.Mesh(geometryPluto, materialPluto);
+        const sun1 = new THREE.Mesh(geometryFake, materialFake);
+        const sun2 = new THREE.Mesh(geometryFake, materialFake);
+        const sun3 = new THREE.Mesh(geometryFake, materialFake);
+        const sun4 = new THREE.Mesh(geometryFake, materialFake);
+        const sun5 = new THREE.Mesh(geometryFake, materialFake);
+        const sun6 = new THREE.Mesh(geometryFake, materialFake);
+        const sun7 = new THREE.Mesh(geometryFake, materialFake);
+        const sun8 = new THREE.Mesh(geometryFake, materialFake);
+        const star = new THREE.Mesh(geometryStar, materialStar);
+
+
+        // 在場景裡增加父層方塊 然後再父層裡加入子層方塊
+        // 就形成聯動的關係
+        scene.add(sun);
+        scene.add(sun1);
+        scene.add(sun2);
+        scene.add(sun3);
+        scene.add(sun4);
+        scene.add(sun5);
+        scene.add(sun6);
+        scene.add(sun7);
+        scene.add(sun8);
+        scene.add(star);
+
+        sun.add(earth);
+        earth.add(moon);
+        sun1.add(mercury);
+        sun2.add(venus);
+        sun3.add(mars);
+        sun4.add(jupiter);
+        sun5.add(saturn);
+        sun6.add(uranus);
+        sun7.add(neptune);
+        sun8.add(pluto);
+
+
+        //新增名字標籤
+        const earthDiv = document.createElement('div');
+        earthDiv.className = 'label';
+        earthDiv.textContent = 'earth';
+        earthDiv.style.marginTop = "-1em";
+        const earthLabel = new CSS2DObject(earthDiv);
+        earthLabel.position.set(0, 1, 0);
+        earth.add(earthLabel);
+
+        const sunDiv = document.createElement('div');
+        sunDiv.className = 'label';
+        sunDiv.textContent = 'sun';
+        sunDiv.style.marginTop = "-1em";
+        const sunLabel = new CSS2DObject(sunDiv);
+        sunLabel.position.set(0, 1, 0);
+        sun.add(sunLabel);
+
+        const moonDiv = document.createElement('div');
+        moonDiv.className = 'label';
+        moonDiv.textContent = 'moon';
+        moonDiv.style.marginTop = "-1em";
+        const moonLabel = new CSS2DObject(moonDiv);
+        moonLabel.position.set(0, 1, 0);
+        moon.add(moonLabel);
+
+        const mercuryDiv = document.createElement('div');
+        mercuryDiv.className = 'label';
+        mercuryDiv.textContent = 'mercury';
+        mercuryDiv.style.marginTop = "-1em";
+        const mercuryLabel = new CSS2DObject(mercuryDiv);
+        mercuryLabel.position.set(0, 1, 0);
+        mercury.add(mercuryLabel);
+
+        const venusDiv = document.createElement('div');
+        venusDiv.className = 'label';
+        venusDiv.textContent = 'venus';
+        venusDiv.style.marginTop = "-1em";
+        const venusLabel = new CSS2DObject(venusDiv);
+        venusLabel.position.set(0, 1, 0);
+        venus.add(venusLabel);
+
+        const marsDiv = document.createElement('div');
+        marsDiv.className = 'label';
+        marsDiv.textContent = 'mars';
+        marsDiv.style.marginTop = "-1em";
+        const marsLabel = new CSS2DObject(marsDiv);
+        marsLabel.position.set(0, 1, 0);
+        mars.add(marsLabel);
+
+        const jupiterDiv = document.createElement('div');
+        jupiterDiv.className = 'label';
+        jupiterDiv.textContent = 'jupiter';
+        jupiterDiv.style.marginTop = "-1em";
+        const jupiterLabel = new CSS2DObject(jupiterDiv);
+        jupiterLabel.position.set(0, 1, 0);
+        jupiter.add(jupiterLabel);
+
+        const saturnDiv = document.createElement('div');
+        saturnDiv.className = 'label';
+        saturnDiv.textContent = 'saturn';
+        saturnDiv.style.marginTop = "-1em";
+        const saturnLabel = new CSS2DObject(saturnDiv);
+        saturnLabel.position.set(0, 1, 0);
+        saturn.add(saturnLabel);
+
+        const uranusDiv = document.createElement('div');
+        uranusDiv.className = 'label';
+        uranusDiv.textContent = 'uranus';
+        uranusDiv.style.marginTop = "-1em";
+        const uranusLabel = new CSS2DObject(uranusDiv);
+        uranusLabel.position.set(0, 1, 0);
+        uranus.add(uranusLabel);
+
+        const neptuneDiv = document.createElement('div');
+        neptuneDiv.className = 'label';
+        neptuneDiv.textContent = 'neptune';
+        neptuneDiv.style.marginTop = "-1em";
+        const neptuneLabel = new CSS2DObject(neptuneDiv);
+        neptuneLabel.position.set(0, 1, 0);
+        neptune.add(neptuneLabel);
+
+        const plutoDiv = document.createElement('div');
+        plutoDiv.className = 'label';
+        plutoDiv.textContent = 'pluto';
+        plutoDiv.style.marginTop = "-1em";
+        const plutoLabel = new CSS2DObject(plutoDiv);
+        plutoLabel.position.set(0, 1, 0);
+        pluto.add(plutoLabel);
+
+        sun.position.set(0, 0, 0);
+        star.position.set(0, 0, 0);
+        // 子層的X軸位置會基於父層再增加
+        moon.position.x = 5;
+
+        mercury.position.x = 10;
+        venus.position.x = 20;
+        earth.position.x = 30;
+        mars.position.x = 40;
+        jupiter.position.x = 50;
+        saturn.position.x = 60;
+        uranus.position.x = 70;
+        neptune.position.x = 80;
+        pluto.position.x = 90;
+
+
+        const light = new THREE.PointLight('white', 1000, 100);
+        light.position.set(0, 0, 0);
+        scene.add(light);
+        const light2 = new THREE.PointLight('white', 8000, 100);
+        light2.position.set(0, -250, 0);
+        scene.add(light2);
+
+
+
+
+
+
+
+        //設置攝影機的位置
+        camera.position.set(0, 0, 15);
+
+
+        // 設置播放內容------------------------------------
+        function animate() {
+            //場景如何播放 方塊旋轉XY軸
+            requestAnimationFrame(animate);
+
+            // 當父層在旋轉時子層會跟著旋轉
+            sun.rotation.y += 0.002;
+            earth.rotation.y += 0.01;
+            moon.rotation.y += 0.05;
+            sun1.rotation.y += 0.03;
+            sun2.rotation.y += 0.01;
+            sun3.rotation.y += 0.015;
+            sun4.rotation.y += 0.008;
+            sun5.rotation.y += 0.01;
+            sun6.rotation.y += 0.005;
+            sun7.rotation.y += 0.025;
+            sun8.rotation.y += 0.02;
+
+            mercury.rotation.y += 0.01;
+            venus.rotation.y += 0.01;
+            earth.rotation.y += 0.01;
+            mars.rotation.y += 0.01;
+            jupiter.rotation.y += 0.01;
+            saturn.rotation.y += 0.01;
+            uranus.rotation.y += 0.01;
+            neptune.rotation.y += 0.01;
+            pluto.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+            labelRenderer.render(scene, camera);
+        }
+        animate();
+
+        const axesHelper = new THREE.AxesHelper(5);
+        scene.add(axesHelper);
+
+        // 滑鼠控制------------------------------------
+        const controls = new OrbitControls(camera, renderer.domElement);
+        const loader = new GLTFLoader();
+    </script>
+</body>
+
+</html>

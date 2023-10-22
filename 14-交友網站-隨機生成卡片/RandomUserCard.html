@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RandomuserCard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        .card{
+            min-width: 400px;
+            border: unset;
+            position: relative;
+        }
+        .heartBtn{
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            text-align: center;
+            position: absolute;
+            right:13%;
+            top:5%;
+        }
+        .card-title{
+            font-weight: bold;
+        }
+        .text{
+            padding: 5px;
+            letter-spacing: 1px;
+        }
+        img{
+            max-width: 200px;
+            height: 200px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="p-2">
+                <button type="button" class="btn btn-outline-primary my-4 mx-5" @click="status = !status">切換照片</button>
+                <span v-if="status" class="text">現在的照片為:清晰</span>
+                <span v-else class="text">現在的照片為:模糊</span>
+            </div>
+            <div class="row gap-3 justify-content-center">
+                <div v-for="item in data" class="card col-md-6 col-lg-3 mb-3 p-3 bg-light">
+                    <button type="button" class="heartBtn btn btn-outline-danger rounded-circle" @click="item.favorite = !item.favorite">
+                        <i v-if="!item.favorite" class="bi bi-suit-heart"></i>
+                        <i v-else class="bi bi-suit-heart-fill"></i>
+                    </button>
+                    <img v-if="status" class="card-img-top m-auto" :src="item.picture.large" alt="Card image cap" style="border-radius: 50%;">
+                    <img v-else class="card-img-top m-auto" :src="item.picture.thumbnail" alt="Card image cap" style="border-radius: 50%;">
+                    <div class="card-body p-0">
+                      <h5 class="card-title">{{item.name.title}}. {{item.name.first}} {{item.name.last}}
+                        <span v-if="item.gender === 'male'" ><i class="bi bi-gender-male"></i></span>
+                        <span v-else="item.gender === 'male'"><i class="bi bi-gender-female"></i></span>
+                      </h5>
+                      <!-- 實際有功能的a -->
+                      <div class="text">🍰Birthday:{{ birthday(item.dob.date) }}</div>
+                      <div class="text">✉️E-mail:<a :href=`mailto:${item.email}`>{{item.email}}</a></div>
+                      <div class="text">☎️Telephone:<a :href=`tel:${item.phone}`>{{item.phone}}</a></div>
+                      <div class="text">📱Cellphone:<a :href=`tel:${item.cell}`>{{item.cell}}</a></div>
+                      <div class="text">📌Country:{{item.location.country}}</div>
+                      <div class="text">Address:
+                        <a :href=`https://www.google.com/maps/search/${item.location.country}${item.location.state}${item.location.city}${item.location.street.name}${item.location.street.number}` target="_blank">
+                            {{item.location.country}} {{item.location.state}} {{item.location.city}} {{item.location.street.name}} {{item.location.street.number}}
+                        </a>
+                      </div>
+                      <div class="text">
+                        <iframe :src=`https://www.google.com/maps?q=${item.location.coordinates.latitude},${item.location.coordinates.longitude}&output=embed` width="100%" height="200"></iframe>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- <script src="./data.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script type="module">
+        import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js';
+        const app = createApp({
+            data(){
+                return {
+                    //先建立空陣列讓他可以放data
+                    data: [],
+                    status: true,
+                }
+            },
+            methods:{
+                birthday(birth){
+                    return birth.substr(0 , 10);
+                },
+                // fetch資料的function this是指這個app
+                fetch_data() {
+                    let url = 'https://randomuser.me/api/?results=10';
+                    fetch(url)
+                        .then((response) => {
+                            return response.json();
+                        })
+                        //如果用一般的function函式 this會是指此function
+                        .then((dataGet) => {
+                            console.log(dataGet.results);
+                            this.data = dataGet.results;
+                        })
+                },
+                axios_data(){
+                    let url = 'https://randomuser.me/api/?results=10';
+                    axios.get(url)
+                        .then((res) => {
+                            this.data = res.data.results;
+                        })
+                },
+            },
+            mounted(){
+                // fetch資料的function this是指這個app
+                // const { fetch_data } = this; 把內容物定義為this 就可以直接用內容
+                // 但如果沒有的話則在使用前要寫this =>表示是這個app的methods
+                // this.fetch_data();
+                this.axios_data();
+            },
+        });
+        app.mount('#app');
+    </script>
+    <script>
+    </script>
+</body>
+</html>

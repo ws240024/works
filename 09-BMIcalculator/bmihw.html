@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B M I 計算機</title>
+    <style>
+        *{
+            font-family: 微軟正黑體;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .board{
+            width: 450px;
+            height: 600px;
+            background-color: #355e9e;
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 2px 2px 30px 2px #1e1e1e;
+        }
+        .box{
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+        }
+        .title{
+            font-size: 24px;
+            font-weight: bold;
+            background-color: #fbbf29;
+            padding: 5px 70px;
+            color:#355e9e;
+            letter-spacing: 4px;
+        }
+        .content{
+            color:#355e9e;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        input{
+            font-size: 18px;
+            width: 130px;
+        }
+        button{
+            font-size: 18px;
+            background-color: #355e9e;
+            border: unset;
+            cursor: pointer;
+            margin: 0px 15px;
+            padding: 10px 30px;
+            color:#fff;
+            letter-spacing: 5px;
+            border-radius: 10px;
+        }
+        button:hover {
+            background-color: #fbbf29;
+            color:#222;
+            font-weight: bold;
+        }
+        .calc {
+            color:#fff;
+            letter-spacing: 5px;
+            font-size: 32px;
+            background-color: #eee;
+            padding: 20px;
+            font-weight: normal;
+            text-shadow: 2px 2px 3px #355e9e,
+                        -2px -2px 2px #fbbf29,
+                        2px -2px 3px #355e9e,
+                        -2px 2px 2px #fbbf29;
+        }
+        .result{
+            transition:1s;
+        }
+        .suggestion{
+            font-size: 16px;
+            color:#555;
+        }
+        .folder{
+            width: 150px;
+            height: 50px;
+            background-color: #fbbf29;
+            position: absolute;
+            left:50%;
+            top:-15px;
+            transform: translateX(-50%);
+            border-radius: 10px 10px 0 0;
+        }
+        .folder::before{
+            content:'';
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #fbbf29;
+            position: absolute;
+            left: 50px;
+            top:-20px;
+            border-radius: 50%;
+        }
+        .folder::after{
+            content:'';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #333;
+            position: absolute;
+            left: 65px;
+            top: -10px;
+            border-radius: 50%;
+        }
+        .orange{
+            background-color:#dd8304;
+            color:#fff;
+            padding: 0px 50px;
+        }
+        .green{
+            background-color: #027502;
+            color:#fff;
+            padding: 0px 50px;
+        }
+        .red{
+            background-color: #c01515;
+            color:#fff;
+            padding: 0px 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="board">
+            <div class="box">
+                <div class="title">BMI計算機</div>
+                <div class="height content">身高：
+                    <input type="number" placeholder="輸入身高..."> cm
+                </div>
+                <div class="weight content">體重：
+                    <input type="number" placeholder="輸入體重..."> kg
+                </div>
+                <div class="btns">
+                    <button class="submit" type="button">確認</button>
+                    <button class="clear" type="button">清除</button>
+                </div>
+                <div class="calc content">
+                    <span>BMI計算中...</span>
+                </div>
+                <div class="level content">評等：
+                    <span class="result"></span>
+                </div>
+                <div class="suggestion content">
+                    <span class="advice"></span>
+                </div>
+            </div>
+            <div class="folder"></div>
+        </div>
+        
+    </div>
+    <script>
+        var height = document.querySelector('.box .height input');
+        var weight = document.querySelector('.box .weight input');
+        var submitBtn = document.querySelector('.btns .submit');
+        var clearBtn = document.querySelector('.btns .clear');
+        var bmi = document.querySelector('.box .calc span');
+        var result = document.querySelector('.box .level .result');
+        var advice = document.querySelector('.box .suggestion .advice');
+
+
+        submitBtn.addEventListener('click', function(){
+            var height_m = height.value / 100;
+            var weight_v = weight.value;
+            if(height_m >= 2.5 || weight_v >= 250){
+                alert('請問是巨人嗎？請輸入正確數字');
+            }else if(height_m <=0 || weight_v <=0){
+                alert('身高或體重不會是負數唷！');
+            }else{
+                calc = (weight_v / (height_m * height_m)).toFixed(1) ;
+                bmi.textContent = calc;
+            };
+            //辦別是否有class
+            if(result.classList.contains('green')){
+                result.classList.remove('green');
+            }else if(result.classList.contains('red')){
+                result.classList.remove('red');
+            }else if(result.classList.contains('orange')){
+                result.classList.remove('orange');
+            }else{};
+
+
+
+            //判斷程度
+            if (calc >= 35){
+                result.textContent= '重度肥胖';
+                advice.textContent= '看看你的肚子 別再吃了 立刻馬上動起來!';
+                result.classList.add('red');
+            }else if(calc >=30 ){
+                result.textContent= '中度肥胖';
+                advice.textContent= '找個夥伴一起相互鼓勵減肥吧!';
+                result.classList.add('red');
+            }else if(calc >=27 ){
+                result.textContent= '輕度肥胖';
+                advice.textContent= '要均衡飲食 精緻澱粉甜食先say byebye';
+                result.classList.add('red');
+            }else if(calc >=24 ){
+                result.textContent= '過重';
+                advice.textContent= '可惜 差一些就可以正常體重了 加油加油!';
+                result.classList.add('orange');
+            }else if(calc >=18.5 ){
+                result.textContent= '正常';
+                advice.textContent= '哇嗚～相當不錯喔!請繼續保持唷!';
+                result.classList.add('green');
+            }else{
+                result.textContent= '體重過輕';
+                advice.textContent= '多補充點營養 不然要被風吹走了!';
+                result.classList.add('orange');
+            };
+        });
+        clearBtn.addEventListener('click',function(){
+            height.value = '';
+            weight.value = '';
+            result.textContent = '';
+            advice.textContent = '';
+            bmi.textContent = 'BMI計算中...';
+            result.classList.remove('orange','red','green');
+        });
+    </script>
+</body>
+</html>
