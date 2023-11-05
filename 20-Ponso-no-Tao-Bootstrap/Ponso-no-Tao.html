@@ -1,0 +1,458 @@
+<html lang="en" class="skrollr skrollr-desktop">
+<head>
+    <meta charset="UTF-8">
+    <title>人之島-蘭嶼</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        @charset "UTF-8";
+        @import url("https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@500&display=swap");
+
+        * {
+            font-family: 微軟正黑體;
+            position: relative;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .h1,
+        .h2,
+        .h3,
+        .h4,
+        .h5,
+        .h6 {
+            font-weight: bold;
+        }
+
+        body {
+            height: 1500px;
+        }
+
+        nav.navbar.fixed-top.navbar-expand-md.navbar-top {
+            background-color: transparent;
+            transition-duration: 0.5s;
+        }
+
+        nav.navbar.fixed-top.navbar-expand-md.navbar-top a {
+            color: white;
+        }
+
+        nav.navbar.fixed-top.navbar-expand-md.navbar-top .navbar-header a.navbar-brand.mb-0 {
+            font-weight: bold;
+            font-family: Kaisei HarunoUmi;
+            font-size: 25px;
+        }
+
+        nav.navbar.fixed-top.navbar-expand-md.navbar-top .collapse.navbar-collapse a {
+            font-size: 18px;
+            transition-duration: 0.5s;
+        }
+
+        nav.navbar.fixed-top.navbar-expand-md.navbar-top .collapse.navbar-collapse a:hover {
+            color: #FFCA1F;
+        }
+
+        header.title {
+            text-align: center;
+            background-image: url(https://www.taiwan.net.tw/att/1/big_scenic_spots/pic_650_16.jpg);
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+
+        header.title .container {
+            padding: 300px 0px;
+            padding-top: 200px;
+        }
+
+        header.title .container h1 {
+            font-size: 60px;
+            margin-bottom: 0px;
+            color: #eee;
+            font-family: Kaisei HarunoUmi;
+            text-shadow: #074E7D 0.1em 0.1em 0.2em;
+        }
+
+        header.title .container span {
+            font-weight: bold;
+            font-family: Kaisei HarunoUmi;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        header.title .container hr {
+            max-width: 60px;
+            border: solid 2px white;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        header.title .container h5 {
+            font-family: Kaisei HarunoUmi;
+            margin-top: -10px;
+            opacity: 0.8;
+            color: #074E7D;
+        }
+
+        section {
+            padding: 50px 0px;
+        }
+
+        section#section_ask {
+            background-color: #074E7D;
+        }
+
+        section#section_ask .col-sm-5.img {
+            background-image: url(https://tour.taitung.gov.tw/content/images/static/4-6-11-1.jpg);
+            height: 350px;
+            background-size: cover;
+        }
+
+        section#section_ask .col-sm-7 {
+            color: #fff;
+            padding: 0px 40px;
+            margin-top: 140px;
+        }
+
+        section#section_ask .col-sm-7 h2 {
+            border-left: solid 10px #FFCA1F;
+            padding-left: 10px;
+        }
+
+        section#section_info .bgc img {
+            position: absolute;
+            width: 85%;
+            left: -60%;
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        section#section_info .col-sm-12 h2 {
+            border-left: solid 5px #FFCA1F;
+            padding-left: 10px;
+        }
+
+        section#section_info .col-md-4 h3 {
+            color: #074E7D;
+        }
+
+        section#section_info img {
+            width: 120%;
+        }
+
+        section#section_info .img1 {
+            left: 0%;
+        }
+
+        section#section_info .img2 {
+            width: 125%;
+            top: -50%;
+            left: 0%;
+        }
+
+        section#section_info .img3 {
+            width: 110%;
+            left: -8%;
+            top: -20%;
+        }
+
+        section#section_info .img_wrap {
+            height: 200px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        section#section_story {
+            background-color: #074E7D;
+            color: white;
+            padding: 0px;
+        }
+
+        section#section_story .col-sm-5 {
+            background-image: url(https://miro.medium.com/max/1400/1*f3sfch_WH3NXxzXF7Y1uQw.jpeg);
+            background-size: cover;
+            height: 350px;
+        }
+
+        section#section_story .col-sm-7 {
+            text-align: center;
+        }
+
+        section#section_story .col-sm-7 h3 {
+            margin-top: 15px;
+        }
+
+        section#section_story .col-sm-7 .features {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        section#section_story .col-sm-7 i {
+            font-size: 40px;
+            margin: 10px;
+        }
+
+        section#section_story .col-sm-7 p {
+            padding: 0px 25px;
+        }
+
+        section#section_story .col-sm-7 p span {
+            font-size: 20px;
+            font-weight: bold;
+            color: #FFCA1F;
+        }
+
+        section#section_viewpoint h2 {
+            border-left: solid 10px #FFCA1F;
+            padding-left: 10px;
+        }
+
+        section#section_viewpoint img {
+            width: 100%;
+        }
+
+        section#section_viewpoint i {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        section#section_viewpoint .col-sm-6 {
+            padding: 10px 5px;
+        }
+
+        section#section_viewpoint .content {
+            padding: 20px;
+        }
+
+        section#section_viewpoint .content h3 {
+            color: #074E7D;
+        }
+
+        footer.title {
+            text-align: center;
+            background-image: url(https://www.taiwan.net.tw/att/1/big_scenic_spots/pic_650_16.jpg);
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+
+        footer.title .container {
+            padding: 200px 0px;
+            padding-top: 100px;
+        }
+
+        footer.title .container h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #eee;
+            font-family: Kaisei HarunoUmi;
+            text-shadow: #074E7D 0.1em 0.1em 0.2em;
+        }
+
+        footer.title .container input {
+            margin-left: auto;
+            margin-right: auto;
+            font-family: Kaisei HarunoUmi;
+            max-width: 350px;
+            opacity: 0.8;
+            color: #074E7D;
+            margin-bottom: 20px;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body style="height: 3549px;">
+    <nav class="navbar fixed-top navbar-expand-md navbar-top">
+        <div class="container">
+            <div class="navbar-header"><a class="navbar-brand mb-0">A Kokey! 你好!</a></div>
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a class="nav-link px-3" href="#section_ask">引言 Intro</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#section_info">簡介 Info</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#section_story">活動 Activity</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#section_viewpoint">景點 Viewpoint</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="title">
+        <div class="container">
+            <h1 data-0="transform: translateY(-50px)" data-500="transform: translateY(100px)"
+                class="skrollable skrollable-between" style="transform: translateY(-50px);">人之島</h1>
+            <span>Ponso-no-Tao</span>
+            <hr>
+            <h5>一座有人居住的島，而我們熟知的名字為蘭嶼</h5>
+        </div>
+    </header>
+    <section id="section_ask">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 img skrollable skrollable-between" data-0="transform: translateX(-200px)"
+                    data-500="transform: translateX(0px)" style="transform: translateX(-200px);"> </div>
+                <div class="col-sm-7">
+                    <h2 data-300="opacity: 0;transform: translateX(-100px)"
+                        data-500="opacity: 1;transform: translateX(0px)" class="skrollable skrollable-before"
+                        style="opacity: 0; transform: translateX(-100px);"> 蘭嶼的魅力到底在哪裡？<br>怎麼很多人說得到了蘭嶼病？</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section_info">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 bgc"><img src="https://cdn-icons-png.flaticon.com/512/872/872256.png" alt=""
+                        data-bottom-top="left: -60%;opacity: 0.4" data-center="left: 40%;opacity: 0.1"
+                        class="skrollable skrollable-before" style="left: -60%; opacity: 0.4;"></div>
+                <div class="col-sm-12">
+                    <h2 data-bottom-top="opacity:0;transform:translateY(20px)"
+                        data-center="opacity:1;transform:translateY(0px)" class="skrollable skrollable-before"
+                        style="opacity: 0; transform: translateY(20px);">飛魚的故鄉</h2>
+                    <hr>
+                </div>
+                <div class="col-md-4 col-sm-6 skrollable skrollable-before"
+                    data-bottom-top="opacity:0;transform:translateY(20px)"
+                    data-center="opacity:1;transform:translateY(0px)" style="opacity: 0; transform: translateY(20px);">
+                    <div class="img_wrap"><img class="img1"
+                            src="https://upload.wikimedia.org/wikipedia/commons/7/75/06.21_副總統參訪「野銀部落地下屋」_%2850029231857%29.jpg"
+                            alt=""></div>
+                    <h3>起源</h3>
+                    <p>蘭嶼最早的名稱為達悟語「Ponso no
+                        Tao」，意思是「人之島」。漢人最早以台語音譯紅頭嶼(Âng-thâu-sū)或紅豆嶼(Âng-tāu-sū)，日治時期以後固定紅頭嶼(日語：紅頭嶼／こうとうしょ Kōtō
+                        sho)之名。<br><br>1947年，臺灣省行政長官公署民政處鑑於「紅頭」的名稱極易引人聯想到紅蟲毒害的恐懼，又因島上盛產蝴蝶蘭而改名「蘭嶼」。</p>
+                </div>
+                <div class="col-md-4 col-sm-6 skrollable skrollable-before"
+                    data-bottom-top="opacity:0;transform:translateY(20px)"
+                    data-center="opacity:1;transform:translateY(0px)" style="opacity: 0; transform: translateY(20px);">
+                    <div class="img_wrap"><img class="img2"
+                            src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Botel_Tobago_Insel_%28Karte_1905%29.jpg"
+                            alt=""></div>
+                    <h3>地理位置</h3>
+                    <p>蘭嶼位於西太平洋位置，在臺灣本島(達悟語稱做Ilaod)的東南方，在綠島的南方，南臨巴士海峽與菲律賓之巴丹群島遙遙相望。巴丹群島最北端的雅米島，距離小蘭嶼99公里。<br><br>即東經121度5分，北緯22度間。面積有48.3892平方公里，熱帶地區氣候，屬海洋性氣候，年雨量常在3,000公釐以上，年降雨日數達224天。
+                    </p>
+                </div>
+                <div class="col-md-4 col-sm-6 skrollable skrollable-before"
+                    data-bottom-top="opacity:0;transform:translateY(20px)"
+                    data-center="opacity:1;transform:translateY(0px)" style="opacity: 0; transform: translateY(20px);">
+                    <div class="img_wrap"><img class="img3"
+                            src="https://4.bp.blogspot.com/-dZ04ofiqPIg/UEBlB1LY1kI/AAAAAAAACDo/DwGPg2TTMsM/s640/15_1-2-02.jpg"
+                            alt=""></div>
+                    <h3>族群文化</h3>
+                    <p>根據考古與語言學的理論，認為南島語族的擴散是由臺灣經蘭嶼、巴丹島，到達菲律賓，再由東南亞島嶼遷往大洋洲。達悟族（雅美族）人雖然在語言與文化上與巴丹島人相似，但在遺傳上，達悟族人卻更相近於臺灣原住民。<br><br>蘭嶼人口現約有5157人，居民多為原住民達悟族，約4303人。原住民由巴丹島移民至此有數百年的歷史，今日兩方語言仍能溝通，時有交流活動。島上原住民製作拼板舟，並在春夏季節出海捕飛魚，亦稱為「飛魚季」。有「飛魚的故鄉」之稱。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section_story">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-5 pic skrollable skrollable-before"
+                    data-bottom-top="background-size:150% ;background-position: 0% 0%"
+                    data-center="background-size:100% ;background-position: 50% 50%"
+                    style="background-size: 150%; background-position: 0% 0%;"></div>
+                <div class="col-sm-7">
+                    <div class="col-sm-12">
+                        <h3>蘭嶼的特色活動</h3>
+                        <hr>
+                    </div>
+                    <div class="col-sm-12 features">
+                        <div class="row">
+                            <div class="col-sm-4 skrollable skrollable-before"
+                                data-bottom-top="transform:scale(1.5);opacity: 0"
+                                data-center="transform:scale(1);opacity: 1" style="transform: scale(1.5); opacity: 0;">
+                                <i class="fas fa-swimmer"></i>
+                                <h5>潛水</h5>
+                            </div>
+                            <div class="col-sm-4 skrollable skrollable-before"
+                                data-bottom-top="transform:scale(1.5);opacity: 0"
+                                data-center="transform:scale(1);opacity: 1" style="transform: scale(1.5); opacity: 0;">
+                                <i class="fas fa-ship"></i>
+                                <h5>拼板船</h5>
+                            </div>
+                            <div class="col-sm-4 skrollable skrollable-before"
+                                data-bottom-top="transform:scale(1.5);opacity: 0"
+                                data-center="transform:scale(1);opacity: 1" style="transform: scale(1.5); opacity: 0;">
+                                <i class="fas fa-fish"></i>
+                                <h5>飛魚季</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <p><span>//3-6月//</span> 可參與飛魚季，可觀賞到達悟族人招飛魚的活動，並且抓取飛魚，家家戶戶皆會曬上自己捕獲的戰利品，族人與大自然共存的美。</p>
+                    </div>
+                    <div class="col-sm-12">
+                        <p><span>//6-10月//</span> 溫暖的天氣，很適合穿上潛水服泡在涼爽的海洋中，而海中生物也相當的活潑，能讓你看見海底五花八門的絢爛面貌，讓你捨不得離開海裡。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section_viewpoint">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>蘭嶼特色景點</h2>
+                </div>
+                <div class="col-sm-6"><img src="https://pic.pimg.tw/fuyan0131/1545398459-2905136606.jpg" alt=""
+                        data-bottom-top="filter:grayscale(100%)" data-center="filter:grayscale(0%)"
+                        class="skrollable skrollable-before" style="filter: grayscale(100%);"></div>
+                <div class="col-sm-6 content skrollable skrollable-before" data-bottom-top="transform:translateX(20%)"
+                    data-center="transform:translateX(0%)" style="transform: translateX(20%);"><i
+                        class="fas fa-heart"></i>
+                    <h3>情人洞</h3>
+                    <p>情人洞地處偏遠，岩石險峻，靜坐其中聆聽濤聲頗有超凡脫俗的化外感覺。傳說有一部落居民走進黑暗的洞穴中，不小心掉入另一個更深的洞窟，未有人發現。多年以後，這個人從青青草原的岩洞中走出來，已成白髮老人。
+                    </p>
+                </div>
+                <div class="col-sm-6"><img src="https://live.staticflickr.com/317/18713744636_8568f2d0aa_b.jpg" alt=""
+                        data-bottom-top="filter:grayscale(100%)" data-center="filter:grayscale(0%)"
+                        class="skrollable skrollable-before" style="filter: grayscale(100%);"></div>
+                <div class="col-sm-6 content skrollable skrollable-before" data-bottom-top="transform:translateX(20%)"
+                    data-center="transform:translateX(0%)" style="transform: translateX(20%);"><i
+                        class="far fa-camera"></i>
+                    <h3>青青草原</h3>
+                    <p>青青草原為蘭嶼南端最為寬闊的草原，是一處隆起的珊瑚礁台地，早期原為居民傳統耕作地，後因人口外流不再耕作；這裡的土壤富含鐵、鎂等礦物形成紅土，從而生長出大片深綠淺綠相互交錯的大草原，此等自然美景，漸漸成為遊客觀景和欣賞日落的好去處。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="title">
+        <div class="container">
+            <h1>想了解更多蘭嶼的故事嗎?</h1>
+            <input class="form-control" placeholder="E-mail">
+            <button class="btn btn-secondary">訂閱</button>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.30/skrollr.min.js"></script>
+    <script id="rendered-js">
+        $(window).scroll(function (evt) {
+            if ($(window).scrollTop() > 0) {
+                $(".navbar").removeClass("navbar-top");
+                $(".navbar").addClass("bg-light");
+            }
+            else {
+                $(".navbar").addClass("navbar-top");
+                $(".navbar").removeClass("bg-light");
+            }
+        });
+
+        var s = skrollr.init();
+    </script>
+
+
+
+
+
+</body>
+
+</html>
