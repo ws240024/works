@@ -1,170 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Front-end works</title>
-    <style>
-        body,html{
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            font-family: 微軟正黑體;
-        }
-        .container{
-            width: 100%;
-            height: 100vh;
-            background-color: #fff;
-            display:flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap:20px;
-        }
-        .text{
-            /* height: 90px; */
-            /* background-color: red; */
-            display:flex;
-            gap:50px;
-        }
-        .name{
-            font-size: 36px;
-            border-left: solid 10px #FFE76B;
-            padding-left: 20px;
-            color:#4C8BA3;
-        }
-        .contact{
-            color:#4C8BA3;
-        }
-        .works{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap:10px;
-            padding: 50px;
-        }
-        .card{
-            width: 390px;
-            height: 220px;
-            background-size: cover;
-            transition-duration: 2s;
-        }
-        .cardwork01{
-            background-image: url(./picture/pixarRwd.JPG);
-        }
-        .cardwork02{
-            background-image: url(./picture/loading.JPG);
-        }
-        .cardwork03{
-            background-image: url(./picture/microsoft.JPG);
-        }
-        .cardwork04{
-            background-image: url(./picture/boostrap.JPG);
-        }
-        .cardwork05{
-            background-image: url(./picture/bmi.JPG);
-        }
-        .cardwork06{
-            background-image: url(./picture/eatingMap.JPG);
-        }
-        .cardwork07{
-            background-image: url(./picture/colorGame.JPG);
-        }
-        .cardwork08{
-            background-image: url(./picture/weatherCard.JPG);
-        }
-        .cardwork09{
-            background-image: url(./picture/solarSystem.JPG);
-        }
-        .mask{
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.8);
-            opacity: 0;
-            display:flex;
-            justify-content: center;
-            align-items: center;
-        }
-        a{
-            text-decoration: none;
-            padding: 10px 20px;
-            background-color: #555;
-            text-align: center;
-            font-size: 18px;
-            border-radius: 20px;
-            color:#fff;
-        }
-        .card:hover{
-            .mask{
-                opacity: 1;
-            }
-        }
-    </style>
+    <title>Jane's Profolio</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
+
 <body>
-    <div class="container">
-        <div class="text">
-            <div class="name">曾惠貞</div>
-            <div class="contact">
-                <div class="phone">0975-262526</div>
-                <div class="eMail">ws240024@gmail.com</div>
+    <div class="all">
+        <div class="nav">
+            <div class="list">
+                <a href="#aboutMe-t">About Me</a>
+                <a href="#frontEndWorks">Works</a>
             </div>
         </div>
-        <div class="works">
-            <div class="card cardwork01">
-                <div class="mask">
-                    <a class="workName" href="./03-introducePixar-RWD/pixar-RWD.html">RWD-pixar</a>
+        <div class="container">
+            <section id="aboutMe-t">
+                <div class="head">
+                    <div class="textArea">
+                        <div class="title big">
+                            Hello!
+                            </br>我是曾惠貞
+                        </div>
+                        <p>從一開始畢業就投入了樂高教育的區塊，在教學的過程中接觸到些許的模組化程式，發現在自己對於程式相當的有興趣，喜歡程式帶給我的成就感，進而想要深入瞭解程式的運作。在搜尋資料的過程中接觸到『前端網頁設計』，發現可以結合自己的科系『設計』，除了畫面上的美觀外，還可以優化整體的使用者流程，努力在網上自學課程，及參加職訓局的課程，嘗試著呈現出不一樣的專案內容，並且遇到不會的問題也會上網求知，培養自己解決問題的能力，希望未來能協助公司創造出有功能外還兼具美感的網頁。
+                        </p>
+                    </div>
+                    <div class="selfPic">
+                    </div>
                 </div>
-            </div>
-            <div class="card cardwork02">
-                <div class="mask">
-                    <a class="workName" href="./04-loading-animation/loading.html">animation-Loading</a>
+            </section>
+            <section id="aboutMe-bt">
+                <div class="introduction">
+                    <div class="inSchool">
+                        <div class="education">
+                            <div class="title">學歷</div>
+                            <div class="li">
+                                <div class="year">2013-2016</div>
+                                <div class="text">國立雲林科技大學創意生活設計系</div>
+                            </div>
+                            <div class="li">
+                                <div class="year">2011-2013</div>
+                                <div class="text">台中市立豐原高級中等學校</div>
+                            </div>
+                            <div class="li">
+                                <div class="year">2009-2011</div>
+                                <div class="text">台中市立豐原國民中學</div>
+                            </div>
+                        </div>
+                        <div class="awards">
+                            <div class="title">得獎經歷</div>
+                            <div class="li">
+                                <div class="year">2016 11月<a class="text text-link" href="https://www.red-dot.org/project/c-plus-pediatric-clinic-13804?fbclid=IwAR0zFissxBVa1aX2k2NFEUTzHKwh6vixOWq3LG363QNK6XZS90aNBBqdeoI" target="_blank">點我</a></div>
+                                <div class="text">Reddot-Brand Indentity-Winner</div>
+                            </div>
+                            <div class="li">
+                                <div class="year">2016 11月<a class="text text-link" href="https://www.taipeidaward.taipei/Post/91509" target="_blank">點我</a></div>
+                                <div class="text">台北設計獎-廠商贊助獎</div>
+                            </div>
+                            <div class="li">
+                                <div class="year">2016 5月</div>
+                                <div class="text">全國技專校院學生專題製作競賽-第二名</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience">
+                        <div class="title">工作經歷</div>
+                        <div class="cards">
+                            <div class="card">
+                                <div class="year">2016 Jul. - 2022 Mar. (5年9個月)</div>
+                                <div class="subtitle">喬智創意機器人公司
+                                    管理職及樂高老師</div>
+                                <div class="text">
+                                    主要為教導幼稚園小班至國小三年級樂高教育課程，讓他們藉由樂高學到機械原理以及培養程式的邏輯能力，也會協助設計課程並籌備活動及比賽，也負責招生相關事務。</div>
+                            </div>
+                            <div class="card">
+                                <div class="year">2015 Feb. - 2016 Jun. (1年6個月)</div>
+                                <div class="subtitle">喬智創意機器人公司
+                                    行政及儲備老師</div>
+                                <div class="text">
+                                    除了培訓成為樂高老師之外，教室相關的活動海報視覺設計，以及兼任櫃台行政老師工作，負責掌握學生到般狀況，並連結老師與家長間的橋梁以及相關的文書處理。</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="training">
+                        <div class="title">前端程式訓練</div>
+                        <div class="card">
+                            <div class="year">2023 7月 - 2023 11月 (496小時)</div>
+                            <div class="subtitle">Blender3D與Web3D暨JS特效互動前端工程師培訓</div>
+                            <div class="text">
+                                參加產業尖兵計畫，在有限的時間發揮最大的學習，程式方面，從html、css開始從根學起，利用原生切出響應式版面，之後延伸到後面使用框架Vue、Bootstrap更有效的撰寫程式，再加入一些套件parallax、aos讓網站更多元。建模方面，除了建造一般物件外，還學習材質應用，進而賦予靈魂，產生角色動畫連結畫面，最後還有應用到Three.js讓網頁與建模結合製作專案，以實務的方式，與業界接軌。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="title">技能</div>
+                        <div class="cards">
+                            <div class="card-m webSkill">
+                                <div class="icon icon-w"></div>
+                                <div class="subtitle">網頁</div>
+                                <div class="text">
+                                    <div class="text text-i">基礎</div>
+                                    <div class="text">Html、CSS、JavaScript、JSON、Github、RWD</div>
+                                    <div class="text text-i">框架</div>
+                                    <div class="text">Vue、Bootstrap</div>
+                                    <div class="text text-i">套件</div>
+                                    <div class="text">Three.js、GSAP、AOS.js、Sweetalart2</div>
+                                </div>
+                            </div>
+                            <div class="card-m designSkill">
+                                <div class="icon icon-d"></div>
+                                <div class="subtitle">設計</div>
+                                <div class="text">
+                                    <div class="text text-i">平面</div>
+                                    <div class="text">Illustrator、Photoshop、Figma、Canva</div>
+                                    <div class="text text-i">模型</div>
+                                    <div class="text">3D Blender</div>
+                                    <div class="text text-i">影片剪輯</div>
+                                    <div class="text">剪映</div>
+                                </div>
+                            </div>
+                            <div class="card-m clericalSkill">
+                                <div class="icon icon-c"></div>
+                                <div class="subtitle">文書</div>
+                                <div class="text">
+                                    <div class="text text-i">基礎</div>
+                                    <div class="text">Microsoft Word、Microsoft Powerpoint、Microsoft Excel</div>
+                                    <div class="text text-i">協作</div>
+                                    <div class="text">Miro、Teams、Notion</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="card cardwork03">
-                <div class="mask">
-                    <a class="workName" href="./05-microsoft-practice/Microsoft-RWD.html">Microsoft仿切</a>
+            </section>
+            <section id="frontEndWorks">
+                <div class="title">作品</div>
+                <div class="frontEnd">
+                    <div class="subtitle">前端網頁</div>
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide flexbox">
+                                <div class="swiper-text">
+                                    <div class="title">723教室旅程</div>
+                                    <div class="subtitle">主要使用程式：Ｈtml、CSS、Javascript、Three.js、AOS.js、Sweetalart2.js</div>
+                                    <div class="text">
+                                        設計方向是建立一個引人入勝、引發高參與度的互動式網頁體驗。兩個關鍵元素為「滑鼠追蹤」和「滾動式互動」。滑鼠追蹤的設計旨在縮短網頁與使用者之間的距離，通過滑鼠移動即時反饋，增添互動性和趣味。同時，滾動式互動強調網頁的連貫性，通過垂直滾動，每個部分根據使用者的滾動動作而調整呈現速度，使使用者感覺自己參與到一個連貫的故事中，而不僅僅是簡單地瀏覽頁面。
+                                    </div>
+                                    <a href="#" class="btn">Website</a>
+                                    <a href="#" class="btn">Code</a>
+                                </div>
+                                <div class="swiper-pic pic-723classroom"></div>
+                            </div>
+                            <div class="swiper-slide flexbox">
+                                <div class="swiper-text">
+                                    <div class="title">Microsoft官網仿切</div>
+                                    <div class="subtitle">主要使用程式：Ｈtml、CSS、SCSS、Javascript、Swiper.js</div>
+                                    <div class="text">
+                                        仿做Microsoft整個官網，因為是個龐大的網站，所以使用SCSS來條列建置網站結構。在不同的可視寬度下，會有不同的版面配置，甚至手機版時會出現漢堡選單連結checkbox來操作，也觀察到官網有無障礙的使用模式，所以也有額外設置tabindex來模擬，整個建構下，讓我學習到了很多。
+                                    </div>
+                                    <a href="#" class="btn">Website</a>
+                                    <a href="#" class="btn">Code</a>
+                                </div>
+                                <div class="swiper-pic pic-micro"></div>
+                            </div>
+                            <div class="swiper-slide flexbox">
+                                <div class="swiper-text">
+                                    <div class="title">太陽系</div>
+                                    <div class="subtitle">主要使用程式：Ｈtml、CSS、Javascript、Three.js</div>
+                                    <div class="text">
+                                        第一次將模型導入網頁中，整體的概念與3D建模的差不多，但因為加入了程式撰寫的部分，當一個環節出錯之後，就運作不了，所以在查詢資料上相當的重要。運用Three.js導入模型外，還貼上材質讓星球有樣式，並加上OrbitControls讓滑鼠可以自由轉動視角，label標籤也顯示了各星球的名稱。
+                                    </div>
+                                    <a href="#" class="btn">Website</a>
+                                    <a href="#" class="btn">Code</a>
+                                </div>
+                                <div class="swiper-pic pic-solar"></div>
+                            </div>
+                            <div class="swiper-slide flexbox">
+                                <div class="swiper-text">
+                                    <div class="title">動態更新天氣小卡</div>
+                                    <div class="subtitle">主要使用程式：Ｈtml、CSS、Javascript、Bootstrap、Vue</div>
+                                    <div class="text">
+                                        以往在製作天氣小卡時，內容的值都只能自己填寫進去，並無法真的跟著天氣有真正的調整，中央氣象局有提供36小時天氣的JSON陣列，利用Javascript的fetch功能來提取內容，並搭配Vue的方式，讓值可以動態的更動內容，並搭配bootstrap的tab功能來切換區域頁面。
+                                    </div>
+                                    <a href="#" class="btn">Website</a>
+                                    <a href="#" class="btn">Code</a>
+                                </div>
+                                <div class="swiper-pic pic-weathercard"></div>
+                            </div>
+                            <div class="swiper-slide flexbox">
+                                <div class="swiper-text">
+                                    <div class="title">色弱遊戲</div>
+                                    <div class="subtitle">主要使用程式：Ｈtml、CSS、Javascript</div>
+                                    <div class="text">
+                                        前幾年很夯的色弱遊戲，試著用網站的方式復刻出來，裡面最困難的部分應該算是如何自動生成隨意顏色的方塊，並亂數的分配解答的位置，再運用判別式的方式，讓他能夠在分數增加的過程中也增加遊戲的難度，最後為了怕題目太難，還有增設提示搖動解答的方塊，最終利用判別來給予相對應的結果。
+                                    </div>
+                                    <a href="#" class="btn">Website</a>
+                                    <a href="#" class="btn">Code</a>
+                                </div>
+                                <div class="swiper-pic pic-colorgame"></div>
+                            </div>
+                            <div class="swiper-slide flexbox">
+                                <div class="swiper-text">
+                                    <div class="title">BMI計算機</div>
+                                    <div class="subtitle">主要使用程式：Ｈtml、CSS、Javascript</div>
+                                    <div class="text">BMI為衡量一個人是否為適當的體型的數值，所以讓我聯想到在醫院填寫病歷的過程，所以版面設計是像個文件般的方式呈現，利用偽元素做出夾子的效果，而功能的部分是運用到Javascript去抓取使用者輸入的值，當確認後，就計算後，並顯現出結果，再用if else的方式來判別是什麼級距並給予相對應的建議。</div>
+                                    <a href="#" class="btn">Website</a>
+                                    <a href="#" class="btn">Code</a>
+                                </div>
+                                <div class="swiper-pic pic-bmi"></div>
+                            </div>
+                            <div class="swiper-slide flexbox">
+                                <div class="swiper-text">
+                                    <div class="title">Pixar 動畫海報</div>
+                                    <div class="subtitle">主要使用程式：Ｈtml、CSS</div>
+                                    <div class="text">
+                                        挑了幾部喜歡的Pixar動畫來做響應式網站的練習，用原生css的方式讓版面調整，考量到不同使用者在不同裝置上的畫面，並加上hover後會縮放的效果，讓整體版面更加有趣。
+                                    </div>
+                                    <a href="#" class="btn">Website</a>
+                                    <a href="#" class="btn">Code</a>
+                                </div>
+                                <div class="swiper-pic"></div>
+                            </div>
+                            <div class="swiper-slide flexbox">
+                                <div class="swiper-text">
+                                    <div class="title">我們這一家</div>
+                                    <div class="subtitle">主要使用程式：Ｈtml、CSS、Javascript</div>
+                                    <div class="text">
+                                        使用CSS切版，利用屬性background-attachment:fixed的方式製造出視差滾動的效果，並且在上方壓上遮罩讓字浮出，再利用a標籤錨點屬性，讓他可以快速地回到頂部。
+                                    </div>
+                                    <a href="#" class="btn">Website</a>
+                                    <a href="#" class="btn">Code</a>
+                                </div>
+                                <div class="swiper-pic pic-family"></div>
+                            </div>
+                            <div class="swiper-slide flexbox">
+                                <div class="swiper-text">
+                                    <div class="title">Loading</div>
+                                    <div class="subtitle">主要使用程式：Ｈtml、CSS、SCSS</div>
+                                    <div class="text">
+                                        Loading等待的時間總是漫長，所以聯想到製作一個圓滾滾的角色來跳動，他的眼睛是利用偽元素:after來製作，一格格的方塊，經由角色碰觸後再成長，就像是在充電的過程，當滑鼠滑入後，就提升速度般，快速地跳動充電，而背景的部分是有個多個圓形區塊組成，搭配動畫讓他可以悠遊跳動。
+                                    </div>
+                                    <a href="#" class="btn">Website</a>
+                                    <a href="#" class="btn">Code</a>
+                                </div>
+                                <div class="swiper-pic pic-load"></div>
+                            </div>
+                            <div class="swiper-slide flexbox">
+                                <div class="swiper-text">
+                                    <div class="title">Summer</div>
+                                    <div class="subtitle">主要使用程式：Ｈtml、CSS、Bootstrap</div>
+                                    <div class="text">練習應用Bootstrap套件，使用到裡面的Nav、區塊排版、輪播照片、卡片，跟RWD定義在各個大小時，區塊的排版樣式。</div>
+                                    <a href="#" class="btn">Website</a>
+                                    <a href="#" class="btn">Code</a>
+                                </div>
+                                <div class="swiper-pic pic-summer"></div>
+                            </div>
+                            
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="card cardwork04">
-                <div class="mask">
-                    <a class="workName" href="./06-website-Bootstrap/bootstrap-demo.html">網站仿切-Swiper</a>
+            </section>
+            <section class="frontEndOther">
+                <div class="subtitle">其他前端作品
+                    <a href="https://github.com/ws240024/works" target="_blank">Github</a>
                 </div>
-            </div>
-
-            <div class="card cardwork05">
-                <div class="mask">
-                    <a class="workName" href="./09-BMIcalculator/bmihw.html">JS-BMI計算機</a>
+                <div class="parallax">
+                    <img class="thumbnail" src="./image/works/otherworks2-01.jpg" alt="image">
                 </div>
-            </div>
-
-            <div class="card cardwork06">
-                <div class="mask">
-                    <a class="workName" href="./10-foodMap-js/restaurant.html">JS-中興好食地圖</a>
+            </section>
+            <section class="otherWorks">
+                <div class="model">
+                    <div class="subtitle">Model
+                        <a href="https://sketchfab.com/ws240024/models">Sketchfab</a>
+                    </div>
+                    <div class="boxes">
+                        <div class="box-left model01">
+                            <div class="mask"></div>
+                            <div class="text">中興大學校園</div>
+                        </div>
+                        <div class="box-right">
+                            <div class="row-t">
+                                <div class="box model02">
+                                    <div class="mask"></div>
+                                    <div class="text">復古跳跳燈</div>
+                                </div>
+                                <div class="box model03">
+                                    <div class="mask"></div>
+                                    <div class="text">警車</div>
+                                </div>
+                            </div>
+                            <div class="row-bt">
+                                <div class="box model04">
+                                    <div class="mask"></div>
+                                    <div class="text">奇諾比奧角色</div>
+                                </div>
+                                <div class="box model05">
+                                    <div class="mask"></div>
+                                    <div class="text">我的房間</div>
+                                </div>
+                                <div class="box model06">
+                                    <div class="mask"></div>
+                                    <div class="text">等角透視房間</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="card cardwork07">
-                <div class="mask">
-                    <a class="workName" href="./11-colorGame-js/ColorGame.html">JS-色弱遊戲</a>
+                <div class="design">
+                    <div class="subtitle">Design</div>
+                    <div class="boxex-d">
+                        <div class="cplus">
+                            <div class="box-c-l"></div>
+                            <div class="box-c-r">
+                                <div class="box-d"></div>
+                                <div class="box-dt"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="card cardwork08">
-                <div class="mask">
-                    <a class="workName" href="./15-weatherCard-Vue/weatherCard-Vue.html">Vue-天氣小卡</a>
+            </section>
+            <div class="footer">
+                <div class="subtitle">
+                    聯絡資訊
                 </div>
+                <div class="text">電話:0975-262526</div>
+                <div class="text">E-mail:ws240024@gmail.com</div>
             </div>
-
-            <div class="card cardwork09">
-                <div class="mask">
-                    <a class="workName" href="./16-solarSystem/">Three.js-SolarSystem</a>
-                </div>
-            </div>
-
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js"></script>
+    <script>
+        var image = document.getElementsByClassName('thumbnail');
+        new simpleParallax(image);
+    </script>
+
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
 </body>
+
 </html>

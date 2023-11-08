@@ -1,0 +1,539 @@
+@font-face {
+    font-family: 'jf-openhuninn';
+    src: local("jf-openhuninn"),
+        url('../font/jf-openhuninn-2.0.woff') format("woff"),
+        url('../font/jf-openhuninn-2.0.ttf') format("opentype"),
+        url('../font/jf-openhuninn-2.0.eot') format("embedded-opentype");
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "jf-openhuninn";
+}
+
+body,html{
+    padding: 0;
+    margin: 0;
+}
+.all{
+    width: 100%;
+    /* background-color: #aaa; */
+}
+.nav{
+    width: 100%;
+    height: 60px;
+    background-color:#F2BF5E;
+    position: fixed;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px 50px;
+    z-index: 9;
+}
+.list a{
+    text-decoration: none;
+    padding: 10px 20px;
+    color:#ffffff;
+    font-size: 24px;
+}
+.container{
+    margin-top: 60px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#aboutMe-t{
+    padding: 0px 5%;
+    background-color: #F2BF5E;
+}
+#aboutMe-bt{
+    padding: 0px 5%;
+    background-color: #ffffff;
+}
+.head{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+}
+.textArea{
+    color: #ffffff;
+    padding: 100px 80px;
+    width: 100%;
+    /* background-color: red; */
+}
+.title{
+    font-size: 30px;
+    margin-bottom: 20px;
+    border-bottom: solid 5px #F2BF5E;
+    display: inline-block;
+}
+.big{
+    border: unset;
+    line-height: 1.2;
+    font-size: 40px;
+}
+p{
+    text-indent: 2em;
+    font-size: 18px;
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+.selfPic{
+    width: 100%;
+    /* background-color: yellow; */
+}
+.introduction{
+    width: 100%;
+    /* background-color: blue; */
+}
+.year{
+    font-size: 24px;
+    margin: 10px 0px;
+    color:#4C8BA3;
+}
+.text{
+    font-size: 18px;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    color:#595959;
+}
+.inSchool{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+}
+.education{
+    width: 50%;
+    /* background-color: pink; */
+    padding: 50px 100px 0px 100px;
+}
+.awards{
+    width: 50%;
+    /* background-color: orange; */
+    padding: 50px 100px 0px 100px;
+}
+.experience{
+    width: 100%;
+    padding: 50px 100px 0px 100px;
+}
+.cards{
+    gap:50px;
+    display:flex;
+    justify-content: space-between;
+}
+.subtitle{
+    font-size: 24px;
+    color:#DB6A65;
+    padding: 10px 0px;
+}
+.skill{
+    width: 100%;
+    /* background-color: red; */
+    padding: 50px 100px ;
+}
+.card{
+    padding: 10px;
+}
+.li a{
+    text-decoration: none;
+}
+.training{
+    width: 100%;
+    /* background-color: purple; */
+    padding: 50px 100px 0px 100px;
+}
+.icon{
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+}
+.icon-w{
+    background-image: url(../image/icon/programming.png);
+}
+.icon-d{
+    background-image: url(../image/icon/design.png);
+}
+
+.icon-c{
+    background-image: url(../image/icon/content-writing.png);
+}
+
+.skill .cards{
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+.card-m{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+}
+.card-m .subtitle{
+    margin: 20px 0px 20px;
+}
+
+/* works */
+
+#frontEndWorks{
+    width: 100%;
+    background-color: #D9D0C7;
+    padding: 50px 100px 0px 100px;
+}
+.frontEnd{
+    margin-bottom: 30px;
+}
+/* swiper-------- */
+.swiper{
+    width: 100%;
+    height: 550px;
+    background-color: #fff;
+    position: relative;
+    border-radius: 30px;
+}
+.swiper-slide.flexbox {
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+.swiper-text{
+    padding: 50px 150px;
+    width: 50%;
+    /* background-color: red; */
+}
+
+.swiper-text > .text{
+    margin-bottom: 30px;
+}
+.btn{
+    margin-right: 20px;
+    padding: 10px 20px;
+    background-color: #F2BF5E;
+    color:#fff;
+    text-align: center;
+    font-size: 24px;
+    display:inline-block;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn:hover{
+    background-color: #ffffff;
+    color:#F2BF5E;
+    border: solid 1px #F2BF5E;
+}
+
+
+.swiper-pic{
+    position: absolute;
+    right: 50px;
+    bottom:0;
+    width: 840px;
+    height: 550px;
+    background-image: url(../image/mockup/pixar-22.png);
+    background-size: cover;
+}
+.pic-micro{
+    background-image: url(../image/mockup/microsoft-22.png);
+}
+.pic-family{
+    right: 0px;
+    background-image: url(../image/mockup/family-22.png);
+}
+.pic-load{
+    right: 0px;
+    background-image: url(../image/mockup/loading-22.png);
+}
+.pic-summer{
+    right: 0px;
+    background-image: url(../image/mockup/summer-22.png);
+}
+
+.pic-723classroom{
+    background-image: url(../image/mockup/723classroom-22.png);
+}
+
+.pic-colorgame{
+    right: 0px;
+    background-image: url(../image/mockup/colorGame-22.png);
+}
+
+.pic-solar{
+    right: 0px;
+    background-image: url(../image/mockup/solarSystem-22.png);
+}
+
+.pic-weathercard{
+    right: 0px;
+    background-image: url(../image/mockup/weatherCard-22.png);
+}
+
+.pic-bmi{
+    right: 0px;
+    background-image: url(../image/mockup/bmi-22.png);
+}
+
+.swiper {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* swiper-------- */
+
+.thumbnail{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+} 
+.frontEndOther{
+    width: 100%;
+    background-color: #D9D0C7;
+}
+.frontEndOther > .subtitle{
+    padding: 10px 100px;
+}
+
+.frontEndOther > .subtitle > a{
+    text-decoration: none;
+    color:#fff;
+    padding: 5px 20px;
+    margin-left: 20px;
+    background-color: #F2BF5E;
+    border-radius: 20px;
+}
+.frontEndOther a:hover{
+    border-left: 5px solid #DB6A65;
+}
+.otherWorks{
+    padding: 50px 100px 100px 100px;
+    background-color: #D9D0C7;
+}
+
+.otherWorks .subtitle{
+    margin: 20px 0px;
+}
+.model > .subtitle > a{
+    text-decoration: none;
+    color:#fff;
+    padding: 5px 20px;
+    margin-left: 20px;
+    background-color: #F2BF5E;
+    border-radius: 20px;
+}
+.model a:hover{
+    border-left: 5px solid #DB6A65;
+}
+.boxes{
+    width: 90%;
+    height: 600px;
+    margin: auto;
+    background-color: #aaa;
+    display: flex;
+}
+.box-left{
+    width: 40%;
+    background-color: orange;
+}
+.boxes .text{
+    color:#fff;
+    font-size: 24px;
+    position: absolute;
+    display: none;
+}
+.model01{
+    background-image: url(../image/model/nchuCampus.jpeg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mask{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display:none;
+
+}
+.model01:hover{
+    .mask{
+        display:block;
+    }
+    .text{
+        display:block;
+    }
+}
+.box-right{
+    width: 60%;
+}
+.row-t{
+    width: 100%;
+    height: 35%;
+    display:flex;
+}
+.row-bt{
+    width: 100%;
+    height: 65%;
+    display:flex;
+}
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.model02{
+    width: 50%;
+    background-image: url(../image/model/vitagelamp.png);
+    background-size: cover;
+    background-position: center;
+}
+.model02:hover{
+    .mask{
+        display:block;
+    }
+    .text{
+        display:block;
+    }
+}
+.model03{
+    width: 50%;
+    background-image: url(../image/model/policecar.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+.model03:hover{
+    .mask{
+        display:block;
+    }
+    .text{
+        display:block;
+    }
+}
+.model04{
+    width: 33%;
+    background-image: url(../image/model/toad.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+.model04:hover{
+    .mask{
+        display:block;
+    }
+    .text{
+        display:block;
+    }
+}
+.model05{
+    width: 33%;
+    background-image: url(../image/model/room.png);
+    background-size: cover;
+    background-position: 40% 50%;
+}
+.model05:hover{
+    .mask{
+        display:block;
+    }
+    .text{
+        display:block;
+    }
+}
+.model06{
+    width: 34%;
+    background-image: url(../image/model/isometricroom.jpeg);
+    background-size: cover;
+    background-position: 55% 50%;
+}
+.model06:hover{
+    .mask{
+        display:block;
+    }
+    .text{
+        display:block;
+    }
+}
+.design{
+    margin-top: 30px;
+}
+
+
+.boxex-d{
+    width: 90%;
+    margin: auto;
+}
+.cplus{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.box-c-l{
+    width: 60%;
+    height: 600px;
+    background-color: #fff;
+    background-image: url(../image/design/C\ plus\ Pediatric\ Clinic-01.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.box-c-r{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+.box-d{
+    background-color: #fff;
+    width: 100%;
+    height: 50%;
+    background-image: url(../image/design/C\ plus\ Pediatric\ Clinic-book-01-01.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.box-dt{
+    background-color: #fff;
+    width: 100%;
+    height: 50%;
+    background-image: url(../image/design/cplus-hb.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.footer{
+    width: 100%;
+    background-color: #F2BF5E;
+    text-align: center;
+    padding: 30px 0px;
+}
+.box-ds{
+    background-color: #fff;
+    width: 20%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+.d01{
+    background-color: #aaa;
+    /* background-image: url(../image/design/01.jpg); */
+}
+.d02{
+    background-image: url(../image/design/02.jpg);
+}
+.d03{
+    background-color: #aaa;
+    /* background-image: url(../image/design/03.jpg); */
+}
+.d04{
+    background-image: url(../image/design/04.jpg);
+}
+.d05{
+    background-color: #aaa;
+    /* background-image: url(../image/design/05.jpg); */
+}
+.boxex-d2{
+    display: flex;
+}
