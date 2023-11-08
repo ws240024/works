@@ -46,11 +46,11 @@ body,html{
     justify-content: center;
 }
 #aboutMe-t{
-    padding: 0px 5%;
+    padding: 60px 5% 80px;
     background-color: #F2BF5E;
 }
 #aboutMe-bt{
-    padding: 0px 5%;
+    padding: 50px 5%;
     background-color: #ffffff;
 }
 .head{
@@ -62,7 +62,6 @@ body,html{
     color: #ffffff;
     padding: 100px 80px;
     width: 100%;
-    /* background-color: red; */
 }
 .title{
     font-size: 30px;
@@ -84,16 +83,30 @@ p{
 .selfPic{
     width: 100%;
     position: relative;
-    /* background-color: yellow; */
 }
-.selfPic > img{
+.pic-june{
+    width: 400px;
+    height: 600px;
     position: absolute;
-    right: 0px;
-    bottom:0px;
+    right: 20%;
+    bottom: -20px;
+    background-image: url(../image/june.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.pic-june > .text{
+    border: 2px solid #fff;
+    position: absolute;
+    right: -140px;
+    bottom: -30px;
+    padding: 10px;
+    color:#fff;
+    border-radius: 20px;
 }
 .introduction{
     width: 100%;
-    /* background-color: blue; */
 }
 .year{
     font-size: 24px;
